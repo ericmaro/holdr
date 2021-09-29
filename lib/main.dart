@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         translations: AppTranslations(),
         locale: Get.deviceLocale,
         debugShowCheckedModeBanner: false,
-        title: 'GetX Demo',
+        title: 'Card App',
         theme: Themes().lightTheme,
         darkTheme: Themes().darkTheme,
         themeMode: ThemeService().theme,

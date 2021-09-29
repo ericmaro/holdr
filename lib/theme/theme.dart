@@ -9,13 +9,18 @@ class Themes {
       accentColor: HexColor("#009D4D"),
       appBarTheme: AppBarTheme(
         brightness: Brightness.light,
+        backgroundColor: Colors.white,
+        elevation: 0
+      ),
+      iconTheme: IconThemeData(
+        color: Colors.grey
       ),
       backgroundColor: HexColor("#FFFFFF"),
       // accentColor: Color.fromARGB(1, 0, 39, 72),
       scaffoldBackgroundColor: HexColor("#FFFFFF"),
       canvasColor: HexColor("#FFFFFF"),
       floatingActionButtonTheme:
-          FloatingActionButtonThemeData(backgroundColor: HexColor("#009D4D")),
+          FloatingActionButtonThemeData(backgroundColor: HexColor("#FFFFFF")),
       buttonTheme: ButtonThemeData(
         buttonColor: HexColor("#009D4D"), //  <-- dark color
         textTheme:

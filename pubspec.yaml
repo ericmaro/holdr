@@ -32,6 +32,10 @@ dependencies:
   get_storage: ^2.0.3
   graphql_flutter: ^5.0.0
   hexcolor: ^2.0.5
+  flutter_icons: ^1.1.0
+  font_awesome_flutter: ^9.0.0-nullsafety
+  intl: ^0.17.0
+  pattern_formatter: ^2.0.0
 
 dev_dependencies:
   flutter_test:
