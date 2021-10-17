@@ -13,7 +13,6 @@ class DisplayFilterList extends GetWidget<CardController> {
   Widget build(BuildContext context) {
     return Obx(() {
       return Container(
-        width: MediaQuery.of(context).size.height,
         height: 50,
         child: ListView.builder(
             shrinkWrap: true,
@@ -21,9 +20,10 @@ class DisplayFilterList extends GetWidget<CardController> {
             itemCount: tagList.length,
             itemBuilder: (contex, index) {
               return Container(
-                margin: EdgeInsets.only(right: 2),
-                child: main? TagFilters(tagName: tagList[index]): EditableTag(tagName: tagList[index])
-                );
+                  padding: EdgeInsets.only(left: index == 0 ? 10 : 0),
+                  child: main
+                      ? TagFilters(tagName: tagList[index])
+                      : EditableTag(tagName: tagList[index]));
             }),
       );
     });

@@ -14,17 +14,18 @@ class VisibleCardList extends GetWidget<CardController> {
         Obx(() {
           return ListView.builder(
               shrinkWrap: true,
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
               physics: NeverScrollableScrollPhysics(),
               itemCount: controller.visibleCards.length,
               itemBuilder: (context, index) {
-                return TextButton(
-                  onPressed: () {
-                     controller.tempCard = controller.visibleCards[index];
-                    controller.edit = true;
-                    editCard(context);
-                  }, 
-                  child: CardDisplay(card: controller.visibleCards[index])
-                  );
+                return Container(
+                  margin: EdgeInsets.only(top: index == 0 ? 0 : 10, bottom: 10),
+                  child: CardDisplay(
+                      card: controller.visibleCards[index],
+                      obsecure: true,
+                      onPressed: () => controller
+                          .selectCard(controller.visibleCards.toList()[index])),
+                );
               });
         })
       ],
