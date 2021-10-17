@@ -30,7 +30,6 @@ dependencies:
     sdk: flutter
   flutter_form_builder: ^6.1.0+1
   flutter_icons: ^1.1.0
-  font_awesome_flutter: ^9.0.0-nullsafety
   get: ^4.3.8
   get_storage: ^2.0.3
   graphql_flutter: ^5.0.0
@@ -42,10 +41,11 @@ dependencies:
   sembast: ^3.1.1
   uuid: ^3.0.5
   sticky_headers: ^0.2.0
-  flutter_masked_text2: ^0.9.1
   mask_text_input_formatter: ^2.0.0
   credit_card_type_detector: ^2.0.0
+  font_awesome_flutter: ^9.1.0
   cool_alert: ^1.1.0
+  flutter_screen_lock: ^4.0.4+2
 
 dev_dependencies:
   flutter_test:

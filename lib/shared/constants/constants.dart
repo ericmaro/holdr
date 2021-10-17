@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:basic_utils/basic_utils.dart';
+import 'package:credit_card_type_detector/credit_card_type_detector.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
 const textColor = Color(0xFF535353);
@@ -47,6 +49,25 @@ String hideCardNumber(String num) {
   String? s = StringUtils.hidePartial(sanitize, end: 12);
   String? wSpaces = StringUtils.addCharAtPosition(s!, " ", 4, repeat: true);
   return wSpaces;
+}
+
+IconData cardIcon(CreditCardType type) {
+  switch (type) {
+    case CreditCardType.visa:
+      return FontAwesomeIcons.ccVisa;
+    case CreditCardType.mastercard:
+      return FontAwesomeIcons.ccMastercard;
+    case CreditCardType.discover:
+      return FontAwesomeIcons.ccDiscover;
+    case CreditCardType.dinersclub:
+      return FontAwesomeIcons.ccDinersClub;
+    case CreditCardType.jcb:
+      return FontAwesomeIcons.ccJcb;
+    case CreditCardType.amex:
+      return FontAwesomeIcons.ccAmex;
+    default:
+      return FontAwesomeIcons.creditCard;
+  }
 }
 
 dateValidator(String str) {

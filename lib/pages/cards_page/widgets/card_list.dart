@@ -2,6 +2,7 @@ import 'package:card_app/pages/cards_page/controllers/card_controller.dart';
 import 'package:card_app/pages/cards_page/widgets/card_display.dart';
 import 'package:card_app/shared/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screen_lock/functions.dart';
 import 'package:get/get.dart';
 
 class VisibleCardList extends GetWidget<CardController> {
@@ -23,8 +24,18 @@ class VisibleCardList extends GetWidget<CardController> {
                   child: CardDisplay(
                       card: controller.visibleCards[index],
                       obsecure: true,
-                      onPressed: () => controller
-                          .selectCard(controller.visibleCards.toList()[index])),
+                      onPressed: () {
+                        screenLock(
+                          context: context,
+                          correctString: '1234',
+                          confirmation: false,
+                          didUnlocked: () {
+                            Get.back();
+                            controller.selectCard(
+                                controller.visibleCards.toList()[index]);
+                          },
+                        );
+                      }),
                 );
               });
         })

@@ -18,7 +18,7 @@ class CardDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     String cardNumList =
         obsecure ? hideCardNumber(card.cardNumber!) : card.cardNumber!;
-    CreditCardType cardType = detectCCType(cardNumList);
+    CreditCardType type = detectCCType(card.cardNumber!);
     return InkWell(
       onTap: onPressed,
       child: Container(
@@ -58,7 +58,7 @@ class CardDisplay extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Icon(
-                  FontAwesomeIcons.ccVisa,
+                  cardIcon(type),
                   color: Colors.white,
                   size: 40,
                 ),

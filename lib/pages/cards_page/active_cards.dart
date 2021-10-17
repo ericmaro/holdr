@@ -4,6 +4,7 @@ import 'package:card_app/pages/cards_page/widgets/filter_list.dart';
 import 'package:card_app/shared/constants/constants.dart';
 import 'package:card_app/shared/widgets/appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screen_lock/functions.dart';
 import 'package:get/get.dart';
 
 class ActiveCards extends GetWidget<CardController> {
@@ -19,15 +20,16 @@ class ActiveCards extends GetWidget<CardController> {
         child: ListView(
           children: [
             Container(
-              child: DisplayFilterList(
-                  tagList: controller.filters, main: true),
+              child: DisplayFilterList(tagList: controller.filters, main: true),
             ),
             VisibleCardList()
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => controller.addNewCard(),
+        onPressed: () {
+          controller.addNewCard();
+        },
         child: Icon(Icons.add, color: Colors.grey, size: 30),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
