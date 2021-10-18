@@ -7,5 +7,6 @@ class CardBinding implements Bindings {
   void dependencies() {
     Get.lazyPut<CardController>(() => CardController(), fenix: true);
     Get.lazyPut<CardService>(() => CardService(), fenix: true);
+  
   }
 }

@@ -11,7 +11,7 @@ class CardController extends GetxController {
   final _cardService = Get.find<CardService>();
   RxList<BankCard> get cards => _cardService.cards;
   final visibleCards = <BankCard>[].obs;
-  RxList filters = [].obs;
+  final filters = <String>[].obs;
   late BankCard tempCard;
   String filter = '';
   bool edit = false;
@@ -23,11 +23,13 @@ class CardController extends GetxController {
   void onInit() {
     getCards();
     ever(cards, (List<BankCard> c) => setVisibleCards(c));
+
     super.onInit();
   }
 
   setVisibleCards(List<BankCard> c) {
     visibleCards(c);
+    refreshFilters();
   }
 
   setCurrentCard(BankCard value) {
@@ -137,7 +139,13 @@ class CardController extends GetxController {
   }
 
   void addTag(List<String> value) {
-    print(value);
+    // print(value);
+    // String newString = currentCard.value!.tags
+    //     .toSet()
+    //     .difference(value.toSet())
+    //     .toList()
+    //     .first;
+    // _tagService.save(newString);
     currentCard.value!.tags = value;
     currentCard..refresh();
   }
@@ -145,6 +153,7 @@ class CardController extends GetxController {
   void deleteTag(int index) {
     print(index);
     List<String> _tags = currentCard.value!.tags;
+    // _tagService.remove(_tags[index]);
     _tags.removeAt(index);
     BankCard _card = currentCard.value!.copyWith(tags: _tags);
     setCurrentCard(_card);

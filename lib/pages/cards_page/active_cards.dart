@@ -20,7 +20,7 @@ class ActiveCards extends GetWidget<CardController> {
         child: ListView(
           children: [
             Container(
-              child: DisplayFilterList(tagList: controller.filters, main: true),
+              child: DisplayFilterList(main: true),
             ),
             VisibleCardList()
           ],
