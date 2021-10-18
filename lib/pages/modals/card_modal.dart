@@ -16,7 +16,7 @@ class CardModal extends GetWidget<CardController> {
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(25.0), topRight: Radius.circular(25.0))),
-      child: Wrap(children: [
+      child: ListView(shrinkWrap: true, children: [
         Container(
             padding: EdgeInsets.symmetric(
               horizontal: 10,
@@ -26,10 +26,7 @@ class CardModal extends GetWidget<CardController> {
                   card: controller.currentCard.value!,
                   obsecure: false,
                 ))),
-        ListView(
-          shrinkWrap: true,
-          children: [CardForm()],
-        ),
+        CardForm(),
       ]),
     );
   }

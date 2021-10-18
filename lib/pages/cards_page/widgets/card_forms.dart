@@ -219,10 +219,7 @@ class CardForm extends GetWidget<CardController> {
                       });
                 },
               ),
-            ),
-          Padding(
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).viewInsets.bottom))
+            )
         ],
       ),
     );
