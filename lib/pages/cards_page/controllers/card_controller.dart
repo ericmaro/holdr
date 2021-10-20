@@ -1,14 +1,20 @@
 import 'package:basic_utils/basic_utils.dart';
+import 'package:card_app/pages/cards_page/modals/card_modal.dart';
 import 'package:card_app/pages/cards_page/models/bank_card.dart';
 import 'package:card_app/pages/cards_page/services/card_service.dart';
-import 'package:card_app/pages/modals/card_modal.dart';
+import 'package:card_app/pages/pin_page/models/pin.dart';
+import 'package:card_app/pages/pin_page/services/pin_service.dart';
 import 'package:card_app/shared/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:string_encryption/string_encryption.dart';
 
 class CardController extends GetxController {
   final _cardService = Get.find<CardService>();
+  final _pinService = Get.find<PinService>();
+  Rx<Pin?> get pin => _pinService.pin;
+  Rx<String?> decriptedPin = Rx<String?>(null);
   RxList<BankCard> get cards => _cardService.cards;
   final visibleCards = <BankCard>[].obs;
   final filters = <String>[].obs;
@@ -16,15 +22,26 @@ class CardController extends GetxController {
   String filter = '';
   bool edit = false;
   final Rx<BankCard?> currentCard = Rx<BankCard?>(null);
+  final cryptor = StringEncryption();
 
   final cardTags = <String>[].obs;
 
   @override
   void onInit() {
     getCards();
+    getPinDetails();
     ever(cards, (List<BankCard> c) => setVisibleCards(c));
 
     super.onInit();
+  }
+
+  void getPinDetails() async {
+    await _pinService.getPin();
+    if (pin.value != null) {
+      String? decrypted =
+          await cryptor.decrypt(pin.value!.pin, pin.value!.salt);
+      print(decrypted);
+    }
   }
 
   setVisibleCards(List<BankCard> c) {
