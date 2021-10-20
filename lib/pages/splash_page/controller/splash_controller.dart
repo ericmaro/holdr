@@ -24,7 +24,7 @@ class SplashController extends GetxController {
       // initLocale();
       await _pinService.getPin();
       if (pin.value != null) {
-        Get.offNamed('/cards');
+        Get.offNamed('/home');
       } else {
         Get.offNamed('/pin');
       }

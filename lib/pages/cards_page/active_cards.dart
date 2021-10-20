@@ -12,13 +12,26 @@ class ActiveCards extends GetWidget<CardController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: CustomAppBar(),
-      ),
-      body: Container(
+    return SafeArea(
+      child: Container(
+        padding: const EdgeInsets.fromLTRB(20, 30, 20, 5),
+        margin: const EdgeInsets.only(top: 5),
+        width: Get.width,
+        decoration: BoxDecoration(
+            color: Colors.grey[200],
+            borderRadius: BorderRadius.vertical(top: Radius.circular(35))),
         child: ListView(
           children: [
+            const Text(
+              'Your Cards',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              'You have ${controller.cards.length} ${controller.cards.length == 1 ? 'card' : 'cards'}',
+            ),
             Container(
               child: DisplayFilterList(main: true),
             ),
@@ -26,13 +39,6 @@ class ActiveCards extends GetWidget<CardController> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          controller.addNewCard();
-        },
-        child: Icon(Icons.add, color: Colors.grey, size: 30),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
