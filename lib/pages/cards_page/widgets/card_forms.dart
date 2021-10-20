@@ -1,107 +1,225 @@
 import 'package:card_app/pages/cards_page/controllers/card_controller.dart';
-import 'package:card_app/pages/cards_page/controllers/card_form_controller.dart';
 import 'package:card_app/pages/cards_page/models/bank_card.dart';
-import 'package:card_app/pages/cards_page/widgets/filter_list.dart';
-import 'package:card_app/shared/constants/constants.dart';
+import 'package:card_app/pages/cards_page/widgets/tag_widget.dart';
+import 'package:card_app/shared/widgets/block_button.dart';
+import 'package:cool_alert/cool_alert.dart';
+import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
-import 'package:pattern_formatter/numeric_formatter.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class CardForm extends GetWidget<CardController> {
   CardForm({Key? key}) : super(key: key);
-  static final _formKey = GlobalKey<FormState>();
-
-  CardFormController _cardFormController = Get.put(new CardFormController());
-
-
-  
+  final _formKey = GlobalKey<FormBuilderState>();
+  final cardNumberFormatter = new MaskTextInputFormatter(
+      mask: '#### #### #### ####', filter: {"#": RegExp(r'[0-9]')});
+  final validDateFormatter = new MaskTextInputFormatter(
+      mask: 'MM/YY', filter: {"M": RegExp(r'[0-9]'), "Y": RegExp(r'[0-9]')});
+  final cvvFormatter =
+      new MaskTextInputFormatter(mask: '###', filter: {"#": RegExp(r'[0-9]')});
 
   @override
   Widget build(BuildContext context) {
-    BankCard card;
+    Future<bool> colorPickerDialog() async {
+      return ColorPicker(
+        color: controller.currentCard.value!.color,
+        onColorChanged: (Color color) => controller.selectColor(color),
+        width: 40,
+        height: 40,
+        borderRadius: 4,
+        spacing: 5,
+        runSpacing: 5,
+        wheelDiameter: 155,
+        heading: Text(
+          'Select color',
+          style: Theme.of(context).textTheme.subtitle1,
+        ),
+        subheading: Text(
+          'Select color shade',
+          style: Theme.of(context).textTheme.subtitle1,
+        ),
+        wheelSubheading: Text(
+          'Selected color and its shades',
+          style: Theme.of(context).textTheme.subtitle1,
+        ),
+        showMaterialName: true,
+        showColorName: true,
+        showColorCode: true,
+        copyPasteBehavior: const ColorPickerCopyPasteBehavior(
+          longPressMenu: true,
+        ),
+        materialNameTextStyle: Theme.of(context).textTheme.caption,
+        colorNameTextStyle: Theme.of(context).textTheme.caption,
+        colorCodeTextStyle: Theme.of(context).textTheme.bodyText2,
+        colorCodePrefixStyle: Theme.of(context).textTheme.caption,
+        selectedPickerTypeColor: Theme.of(context).colorScheme.primary,
+        pickersEnabled: const <ColorPickerType, bool>{
+          ColorPickerType.both: false,
+          ColorPickerType.primary: true,
+          ColorPickerType.accent: true,
+          ColorPickerType.bw: false,
+          ColorPickerType.custom: true,
+          ColorPickerType.wheel: true,
+        },
+      ).showPickerDialog(
+        context,
+        constraints:
+            const BoxConstraints(minHeight: 480, minWidth: 300, maxWidth: 320),
+      );
+    }
 
-    // if(controller.edit) {
-    //   _cardFormController.setUpForm();
-    // }
-
-    return Form(
-      key: _formKey,
-      child: Column(
+    return Obx(
+      () => Column(
         children: [
-          TextFormField(
-            controller: _cardFormController.cardNum.value,
-            decoration: blueform.copyWith(labelText: 'Card Number'),
-            maxLength: 19,
-            validator: (val) => val!.length<19? 'Invalid Card' : null,
-            inputFormatters: [CreditCardFormatter()],
-            keyboardType: TextInputType.number,
+          Container(
+            padding: EdgeInsets.all(15),
+            child: FormBuilder(
+                onChanged: () {
+                  _formKey.currentState!.save();
+
+                  controller.editCard(BankCard.fromMap({
+                    ...controller.currentCard.value!.toMap(),
+                    ..._formKey.currentState!.value
+                  }));
+                },
+                key: _formKey,
+                child: Column(children: [
+                  FormBuilderTextField(
+                    name: 'cardNumber',
+                    initialValue: controller.currentCard.value!.cardNumber,
+                    keyboardType: TextInputType.number,
+
+                    inputFormatters: [
+                      cardNumberFormatter,
+                    ],
+                    // valueTransformer: (val),
+                    decoration: InputDecoration(
+                      filled: true,
+                      isDense: true,
+                      labelText: 'Number',
+                      hintText: 'XXXX XXXX XXXX XXXX',
+                    ),
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(context),
+                    ]),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: FormBuilderTextField(
+                            name: 'validDate',
+                            initialValue:
+                                controller.currentCard.value!.validDate ==
+                                        '2/22'
+                                    ? ""
+                                    : controller.currentCard.value!.validDate,
+                            textCapitalization: TextCapitalization.sentences,
+                            decoration: InputDecoration(
+                              filled: true,
+                              isDense: true,
+                              labelText: 'Expiry Date',
+                              hintText: 'XX/XX',
+                            ),
+                            inputFormatters: [validDateFormatter],
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(context),
+                            ]),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Expanded(
+                          child: FormBuilderTextField(
+                            name: 'cvv',
+                            textCapitalization: TextCapitalization.sentences,
+                            initialValue:
+                                controller.currentCard.value!.cvv == '222'
+                                    ? ""
+                                    : controller.currentCard.value!.cvv,
+                            decoration: InputDecoration(
+                              filled: true,
+                              isDense: true,
+                              labelText: 'CVV',
+                              hintText: 'XXX',
+                            ),
+                            inputFormatters: [cvvFormatter],
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(context),
+                            ]),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ])),
           ),
           SizedBox(
             height: 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width / 3,
-                child: TextFormField(
-                  validator: (val) => val!.length<3? 'Invalid' : null,
-                  controller: _cardFormController.cvvNum.value,
-                  decoration: blueform.copyWith(labelText: 'CVV'),
-                  maxLength: 3,
-                  keyboardType: TextInputType.number,
-                ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width / 2,
-                child: TextFormField(
-                  validator: (val) => val!.length<4 || !val.contains("/") || dateValidator(val)? 'Invalid Date' : null,
-                  controller: _cardFormController.dateNum.value,
-                  decoration: blueform.copyWith(labelText: 'Valid Until', hintText: 'MM/YY'),
-                  maxLength: 5,
-                ),
-              )
-            ],
+          ListTile(
+            title: const Text('Select color below to change this color'),
+            subtitle: Text(
+                '${ColorTools.materialNameAndCode(controller.currentCard.value!.color)} '
+                'aka ${ColorTools.nameThatColor(controller.currentCard.value!.color)}'),
+            trailing: ColorIndicator(
+                width: 44,
+                height: 44,
+                borderRadius: 22,
+                color: controller.currentCard.value!.color,
+                onSelect: () async {
+                  // Wait for the dialog to return color selection result.
+                  final bool state = await colorPickerDialog();
+                }),
           ),
-          SizedBox(height: 15,),
-          Row(
-            children: [
-              Expanded(flex: 4, child: DisplayFilterList(tagList: _cardFormController.cardTags, main: false),),
-
-              Expanded(
-                flex: 1,
-                child: Container(
-                  decoration:
-                      BoxDecoration(shape: BoxShape.circle, color: Colors.black),
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.add, color: Colors.grey)),
-                ),
-              )
-            ],
-          ),
-          SizedBox(height: 15,),
           Container(
-            width: MediaQuery.of(context).size.width,
-            child: ElevatedButton(
-              child: Text('Submit'),
+              padding: EdgeInsets.all(15),
+              child: TagWidget(
+                  tags: controller.currentCard.value!.tags,
+                  onChanged: (value) {
+                    controller.addTag(value);
+                  })),
+          Container(
+            padding: EdgeInsets.all(15),
+            child: BlockButton(
+              buttonText: 'Save',
               onPressed: () {
-                card = BankCard(cardNumber: _cardFormController.cardNum.value.text, cvv: int.parse(_cardFormController.cvvNum.value.text), validDate: _cardFormController.dateNum.value.text, tags: _cardFormController.cardTags);
-
-                if(controller.edit) {
-                  controller.editCard(card);
+                if (_formKey.currentState!.validate()) {
+                  controller.save();
+                  Get.back();
                 }
-                else {
-                  controller.addCard(card);
-                }
-                Get.delete<CardFormController>();
-                Navigator.pop(context);
               },
             ),
           ),
-          Padding(
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).viewInsets.bottom))
+          if (controller.currentCard.value!.id != null)
+            Container(
+              padding:
+                  EdgeInsets.symmetric(horizontal: 15).copyWith(bottom: 15),
+              child: BlockButton(
+                buttonText: 'Delete Card',
+                color: Theme.of(context).errorColor,
+                onPressed: () {
+                  CoolAlert.show(
+                      context: context,
+                      type: CoolAlertType.warning,
+                      text: 'Are you sure you want to delete this card?',
+                      confirmBtnText: "Yes",
+                      cancelBtnText: "No",
+                      showCancelBtn: true,
+                      onConfirmBtnTap: () {
+                        controller.deleteCard(controller.currentCard.value!);
+                        Get.back();
+                      });
+                },
+              ),
+            )
         ],
       ),
     );
