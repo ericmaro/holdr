@@ -21,7 +21,7 @@ class AppDatabase {
   Future<Database> get database async {
     _dbOpenCompleter = Completer();
     // Calling _openDatabase will also complete the completer with database instance
-    _openDatabase();
+    await _openDatabase();
     return _dbOpenCompleter.future;
   }
 
