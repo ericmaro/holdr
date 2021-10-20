@@ -3,8 +3,7 @@ import 'package:card_app/pages/cards_page/widgets/card_tags_list.dart';
 import 'package:card_app/shared/constants/constants.dart';
 import 'package:credit_card_type_detector/credit_card_type_detector.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:random_color/random_color.dart';
+import 'package:get/get.dart';
 
 class CardDisplay extends StatelessWidget {
   final BankCard card;
@@ -22,7 +21,8 @@ class CardDisplay extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        height: 250,
+        height: MediaQuery.of(context).viewInsets.bottom == 0? 250 : 150,
+        width:  MediaQuery.of(context).viewInsets.bottom == 0? Get.width : 250,
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(25)),
