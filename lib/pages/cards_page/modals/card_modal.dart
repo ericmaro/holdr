@@ -1,6 +1,7 @@
 import 'package:card_app/pages/cards_page/controllers/card_controller.dart';
 import 'package:card_app/pages/cards_page/widgets/card_display.dart';
 import 'package:card_app/pages/cards_page/widgets/card_forms.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +17,7 @@ class CardModal extends GetWidget<CardController> {
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(25.0), topRight: Radius.circular(25.0))),
-      child: ListView(shrinkWrap: true, children: [
+      child: Wrap(children: [
         Container(
             padding: EdgeInsets.symmetric(
               horizontal: 10,
@@ -26,7 +27,17 @@ class CardModal extends GetWidget<CardController> {
                   card: controller.currentCard.value!,
                   obsecure: false,
                 ))),
-        CardForm(),
+        Container(
+          height: Get.height - 300,
+          child: ListView(
+            children: [
+              CardForm(),
+              Padding(
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom))
+            ],
+          ),
+        ),
       ]),
     );
   }
