@@ -34,7 +34,7 @@ class CardModal extends GetWidget<CardController> {
               CardForm(),
               Padding(
                   padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).viewInsets.bottom))
+                      bottom: MediaQuery.of(context).viewInsets.bottom == 0? 0 : 200))
             ],
           ),
         ),
