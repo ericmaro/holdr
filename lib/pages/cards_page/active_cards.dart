@@ -14,7 +14,7 @@ class ActiveCards extends GetWidget<CardController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        padding: const EdgeInsets.fromLTRB(20, 30, 20, 5),
+        padding: const EdgeInsets.fromLTRB(0, 30, 0, 5),
         margin: const EdgeInsets.only(top: 5),
         width: Get.width,
         decoration: BoxDecoration(
@@ -22,19 +22,18 @@ class ActiveCards extends GetWidget<CardController> {
             borderRadius: BorderRadius.vertical(top: Radius.circular(35))),
         child: ListView(
           children: [
-            const Text(
-              'Your Cards',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              'You have ${controller.cards.length} ${controller.cards.length == 1 ? 'card' : 'cards'}',
-            ),
-            Container(
-              child: DisplayFilterList(main: true),
-            ),
+            Obx(() => ListTile(
+                  title: Text('Your Cards',
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                  subtitle: Text(
+                      'You have ${controller.cards.length} ${controller.cards.length == 1 ? 'card' : 'cards'}'),
+                )),
+            controller.filters.length > 0
+                ? Container(
+                    child: DisplayFilterList(main: true),
+                  )
+                : Container(),
             VisibleCardList()
           ],
         ),
