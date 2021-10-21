@@ -14,21 +14,16 @@ class Setting extends GetWidget<SettingsController> {
       elevation: 5,
       color: Colors.white,
       borderRadius: BorderRadius.all(Radius.circular(15)),
-      child: Padding(
-        padding: EdgeInsets.all(15),
-        child: 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Icon(setting[1], color: Colors.blue[800]),
-            Text(setting[0], style: TextStyle(color: Colors.blue[800]),),
-            Obx(() {
-                return Switch(value: controller.settingOptions[index], onChanged: (val) => controller.flipSwitch(index));
-              }
-            )
-          ],
-        ),
+      child: ListTile(
+        contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        leading: Icon(setting[1], color: Colors.blue[800]),
+        title: Text(setting[0], style: TextStyle(color: Colors.blue[800]),),
+        trailing: Obx(() {
+                  return Switch(value: controller.settingOptions[index], onChanged: (val) => controller.flipSwitch(index));
+                }
+              )
       ),
     );
+
   }
 }
