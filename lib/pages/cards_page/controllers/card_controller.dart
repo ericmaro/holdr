@@ -40,6 +40,7 @@ class CardController extends GetxController {
     if (pin.value != null) {
       String? decrypted =
           await cryptor.decrypt(pin.value!.pin, pin.value!.salt);
+      print("decrypted");
       print(decrypted);
     }
   }

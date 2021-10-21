@@ -12,14 +12,6 @@ class PinController extends GetxController {
     currentPin(value);
   }
 
-  initApp() {
-    ;
-    Future.delayed(Duration(seconds: 3), () {
-      // initLocale();
-      Get.offNamed('/cards');
-    });
-  }
-
   void onChangePin(String value) {
     setCurrentPin(value);
   }
@@ -31,7 +23,7 @@ class PinController extends GetxController {
           await cryptor.generateKeyFromPassword(currentPin.value, salt);
       Pin _pin = Pin(pin: key!, salt: salt);
       await _pinService.storePin(_pin);
-      Get.toNamed('/cards');
+      Get.toNamed('/home');
     }
   }
 }
