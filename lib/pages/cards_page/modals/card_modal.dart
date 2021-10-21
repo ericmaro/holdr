@@ -28,13 +28,15 @@ class CardModal extends GetWidget<CardController> {
                   obsecure: false,
                 ))),
         Container(
-          height: Get.height - 300,
           child: ListView(
+            shrinkWrap: true,
             children: [
               CardForm(),
               Padding(
                   padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).viewInsets.bottom == 0? 0 : 200))
+                      bottom: MediaQuery.of(context).viewInsets.bottom == 0
+                          ? 0
+                          : 200))
             ],
           ),
         ),

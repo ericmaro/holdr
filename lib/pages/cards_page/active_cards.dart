@@ -14,29 +14,29 @@ class ActiveCards extends GetWidget<CardController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        padding: const EdgeInsets.fromLTRB(0, 30, 0, 5),
+        padding: const EdgeInsets.fromLTRB(0, 15, 0, 5),
         margin: const EdgeInsets.only(top: 5),
         width: Get.width,
         decoration: BoxDecoration(
             color: Colors.grey[200],
             borderRadius: BorderRadius.vertical(top: Radius.circular(35))),
-        child: ListView(
-          children: [
-            Obx(() => ListTile(
+        child: Obx(() => ListView(
+              children: [
+                ListTile(
                   title: Text('Your Cards',
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
                   subtitle: Text(
                       'You have ${controller.cards.length} ${controller.cards.length == 1 ? 'card' : 'cards'}'),
-                )),
-            controller.filters.length > 0
-                ? Container(
-                    child: DisplayFilterList(main: true),
-                  )
-                : Container(),
-            VisibleCardList()
-          ],
-        ),
+                ),
+                controller.filters.length > 0
+                    ? Container(
+                        child: DisplayFilterList(main: true),
+                      )
+                    : Container(),
+                VisibleCardList()
+              ],
+            )),
       ),
     );
   }
