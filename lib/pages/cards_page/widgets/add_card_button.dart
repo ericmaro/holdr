@@ -7,13 +7,8 @@ class AddCardButton extends GetWidget<CardController> {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        primary: Colors.blue[800],
-        shape: new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(20.0),
-        ),
-      ),
+    return FloatingActionButton(
+      backgroundColor: Colors.blue[800],
       onPressed: () {
         controller.addNewCard();
       },

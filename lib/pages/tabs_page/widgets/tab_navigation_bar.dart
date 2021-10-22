@@ -1,3 +1,4 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:card_app/pages/tabs_page/controllers/tabs_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,27 +9,17 @@ class TabNavigationBar extends GetWidget<TabsPageController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-        return BottomNavigationBar(
-          backgroundColor: Colors.grey[200],
-          elevation: 0,
-          currentIndex: controller.tabIndex.value,
-          onTap: (val) => controller.setTabIndex(val),
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.grey,
-          showUnselectedLabels: false,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'Home',
-              activeIcon: Icon(Icons.home)
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings_outlined),
-              label: 'Home',
-              activeIcon: Icon(Icons.settings)
-            ),
-          ],
-        );
+        return AnimatedBottomNavigationBar(
+          backgroundColor: Colors.blue[800],
+          icons: [Icons.home, Icons.settings], 
+          activeIndex: controller.tabIndex.value,
+          leftCornerRadius: 32,
+          rightCornerRadius: 32,
+          activeColor: Colors.white,
+          gapLocation: GapLocation.center,
+          notchSmoothness: NotchSmoothness.softEdge,
+          onTap: (val) => controller.setTabIndex(val)
+          );
       }
     );
   }
