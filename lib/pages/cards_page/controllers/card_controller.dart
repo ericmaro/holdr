@@ -36,10 +36,9 @@ class CardController extends GetxController {
   }
 
   void getPinDetails() async {
-    await _pinService.getPin();
-    if (pin.value != null) {
-      String? decrypted =
-          await cryptor.decrypt(pin.value!.pin, pin.value!.salt);
+    Pin? _pin = await _pinService.returnPin();
+    if (_pin != null) {
+      String? decrypted = await cryptor.decrypt(_pin.pin, _pin.salt);
       print("decrypted");
       print(decrypted);
     }
