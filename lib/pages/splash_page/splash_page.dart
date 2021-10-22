@@ -7,21 +7,24 @@ class SplashPage extends GetWidget<SplashController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: GetBuilder<SplashController>(
-      init: controller.initApp(),
-      builder: (_) => Container(
+      body: Container(
         height: Get.height,
         width: Get.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Initializing...", style: TextStyle(color: Colors.blue[800], fontSize: 20),),
-            SizedBox(height: 20,),
+            Text(
+              "Initializing...",
+              style: TextStyle(color: Colors.blue[800], fontSize: 20),
+            ),
+            SizedBox(
+              height: 20,
+            ),
             CircularProgressIndicator()
           ],
         ),
       ),
-    ));
+    );
   }
 }
 // SizedBox(

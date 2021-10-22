@@ -6,23 +6,28 @@ import 'package:sembast/sembast_io.dart';
 import 'package:path/path.dart';
 
 class AppDatabase {
+  // Singleton instance
   static final AppDatabase _singleton = AppDatabase._();
-
+  // Singleton accessor
   static AppDatabase get instance => _singleton;
-
   // Completer is used for transforming synchronous code into asynchronous code.
-  late Completer<Database> _dbOpenCompleter;
-
+  Completer<Database>? _dbOpenCompleter = null;
   // A private constructor. Allows us to create instances of AppDatabase
   // only from within the AppDatabase class itself.
   AppDatabase._();
 
   // Database object accessor
   Future<Database> get database async {
-    _dbOpenCompleter = Completer();
-    // Calling _openDatabase will also complete the completer with database instance
-    await _openDatabase();
-    return _dbOpenCompleter.future;
+    // If completer is null, AppDatabaseClass is newly instantiated, so database is not yet opened
+    if (_dbOpenCompleter == null) {
+      _dbOpenCompleter = Completer();
+      // Calling _openDatabase will also complete the completer with database instance
+      _openDatabase();
+    }
+    // If the database is already opened, awaiting the future will happen instantly.
+    // Otherwise, awaiting the returned future will take some time - until complete() is called
+    // on the Completer in _openDatabase() below.
+    return _dbOpenCompleter!.future;
   }
 
   Future _openDatabase() async {
@@ -30,10 +35,8 @@ class AppDatabase {
     final appDocumentDir = await getApplicationDocumentsDirectory();
     // Path with the form: /platform-specific-directory/demo.db
     final dbPath = join(appDocumentDir.path, 'HoldrDB.db');
-
     final database = await databaseFactoryIo.openDatabase(dbPath);
-
     // Any code awaiting the Completer's future will now start executing
-    _dbOpenCompleter.complete(database);
+    _dbOpenCompleter!.complete(database);
   }
 }

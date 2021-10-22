@@ -32,7 +32,7 @@ class PinService extends GetxService {
   Future<void> getPin() async {
     try {
       final _record = await _folder.findFirst(await _db);
-      print(_record);
+
       if (_record != null) {
         setPin(Pin.fromMap(_record.value));
       }

@@ -5,10 +5,10 @@ import 'package:card_app/pages/cards_page/services/card_service.dart';
 import 'package:card_app/pages/pin_page/models/pin.dart';
 import 'package:card_app/pages/pin_page/services/pin_service.dart';
 import 'package:card_app/shared/constants/constants.dart';
-import 'package:flutter/material.dart';
+import 'package:encrypt/encrypt.dart';
+import 'package:flutter/material.dart' hide Key;
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:string_encryption/string_encryption.dart';
 
 class CardController extends GetxController {
   final _cardService = Get.find<CardService>();
@@ -22,7 +22,6 @@ class CardController extends GetxController {
   String filter = '';
   bool edit = false;
   final Rx<BankCard?> currentCard = Rx<BankCard?>(null);
-  final cryptor = StringEncryption();
 
   final cardTags = <String>[].obs;
 
@@ -36,11 +35,20 @@ class CardController extends GetxController {
   }
 
   void getPinDetails() async {
+    if (pin.value != null) {}
     Pin? _pin = await _pinService.returnPin();
+
     if (_pin != null) {
-      String? decrypted = await cryptor.decrypt(_pin.pin, _pin.salt);
-      print("decrypted");
-      print(decrypted);
+      try {
+        final iv = IV.fromLength(16);
+        final key = Key.fromBase16(_pin.salt);
+        final encrypter = Encrypter(AES(key));
+        final decrypted = encrypter.decrypt16(_pin.pin, iv: iv);
+        decriptedPin(decrypted);
+      } catch (e) {
+        print("catch error");
+        print(e);
+      }
     }
   }
 
