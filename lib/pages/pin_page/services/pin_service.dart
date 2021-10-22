@@ -40,4 +40,16 @@ class PinService extends GetxService {
       print(e);
     }
   }
+
+  Future<Pin?> returnPin() async {
+    try {
+      final _record = await _folder.findFirst(await _db);
+      if (_record != null) {
+        return Pin.fromMap(_record.value);
+      }
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
 }
