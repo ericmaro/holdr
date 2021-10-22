@@ -11,7 +11,7 @@ class TabNavigationBar extends GetWidget<TabsPageController> {
     return Obx(() {
         return AnimatedBottomNavigationBar(
           backgroundColor: Colors.blue[800],
-          icons: [Icons.home, Icons.settings], 
+          icons: [Icons.credit_card, Icons.settings], 
           activeIndex: controller.tabIndex.value,
           leftCornerRadius: 32,
           rightCornerRadius: 32,
