@@ -47,6 +47,7 @@ dependencies:
   cool_alert: ^1.1.0
   flutter_screen_lock: ^4.0.4+2
   string_encryption: ^2.0.5
+  animated_bottom_navigation_bar: ^0.3.2
 
 dev_dependencies:
   flutter_test:
