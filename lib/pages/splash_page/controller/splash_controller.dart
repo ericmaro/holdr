@@ -18,11 +18,11 @@ class SplashController extends GetxController {
     super.onInit();
   }
 
-  initApp() {
+  initApp() async{
     setIsBusy(true);
+      await _pinService.getPin();
     Future.delayed(Duration(seconds: 3), () async {
       // initLocale();
-      await _pinService.getPin();
       print(pin);
       if (pin.value != null) {
         Get.offNamed('/home');

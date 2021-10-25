@@ -28,8 +28,8 @@ class CardController extends GetxController {
 
   @override
   void onInit() {
-    getCards();
     getPinDetails();
+    getCards();
     ever(cards, (List<BankCard> c) => setVisibleCards(c));
 
     super.onInit();
@@ -37,6 +37,7 @@ class CardController extends GetxController {
 
   void getPinDetails() async {
     Pin? _pin = await _pinService.returnPin();
+    print(_pin);
     if (_pin != null) {
       String? decrypted = await cryptor.decrypt(_pin.pin, _pin.salt);
       print("decrypted");

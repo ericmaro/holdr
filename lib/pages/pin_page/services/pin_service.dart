@@ -49,7 +49,7 @@ class PinService extends GetxService {
       }
     } catch (e) {
       print(e);
-      return null;
+      throw (e);
     }
   }
 }
