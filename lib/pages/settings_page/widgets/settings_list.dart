@@ -1,21 +1,58 @@
 import 'package:card_app/pages/settings_page/controllers/settings_controller.dart';
 import 'package:card_app/pages/settings_page/widgets/setting.dart';
+import 'package:card_app/pages/settings_page/widgets/setting_card.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screen_lock/functions.dart';
 import 'package:get/get.dart';
 
 class SettingsList extends GetWidget<SettingsController> {
-  const SettingsList({ Key? key }) : super(key: key);
+  const SettingsList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: controller.settings.length,
-      itemBuilder: (context, index) {
-        return Container(
-          margin: const EdgeInsets.only(bottom: 20),
-          child: Setting(index: index));
-      }
-    );
+    return Obx(() => ListView(
+          shrinkWrap: true,
+          children: [
+            SettingCard(
+                leading: Icon(Icons.password_outlined, color: Colors.blue[800]),
+                title: "Show Numbers on Card List",
+                trailing: CupertinoSwitch(
+                    value: controller.showNumbersOnListStatus.value,
+                    onChanged: (val) => {
+                          if (!val)
+                            {controller.showNumbersOnList(val)}
+                          else
+                            {
+                              screenLock(
+                                context: context,
+                                correctString: controller.decriptedPin.value!,
+                                confirmation: false,
+                                didUnlocked: () {
+                                  Get.back();
+                                  controller.showNumbersOnList(val);
+                                },
+                              )
+                            }
+                        })),
+            SettingCard(
+                leading: Icon(Icons.phonelink_lock_outlined,
+                    color: Colors.blue[800]),
+                title: "Enable Idle PIN lock",
+                trailing: CupertinoSwitch(
+                    value: controller.enableIdleLockStatus.value,
+                    onChanged: (val) => controller.enableIdleLock(val))),
+            SettingCard(
+                leading: Icon(Icons.lock_outlined, color: Colors.blue[800]),
+                title: "Enable PIN on start",
+                trailing: CupertinoSwitch(
+                    value: controller.enablePinOnStartStatus.value,
+                    onChanged: (val) => controller.enablePinOnStart(val))),
+            SettingCard(
+              leading: Icon(Icons.security_outlined, color: Colors.blue[800]),
+              title: "Change Master PIN",
+            ),
+          ],
+        ));
   }
 }

@@ -8,13 +8,10 @@ class Themes {
       indicatorColor: HexColor("#009D4D"),
       accentColor: HexColor("#009D4D"),
       appBarTheme: AppBarTheme(
-        brightness: Brightness.light,
-        backgroundColor: Colors.white,
-        elevation: 0
-      ),
-      iconTheme: IconThemeData(
-        color: Colors.grey
-      ),
+          brightness: Brightness.light,
+          backgroundColor: Colors.white,
+          elevation: 0),
+      iconTheme: IconThemeData(color: Colors.grey),
       backgroundColor: HexColor("#FFFFFF"),
       // accentColor: Color.fromARGB(1, 0, 39, 72),
       scaffoldBackgroundColor: HexColor("#FFFFFF"),

@@ -1,6 +1,5 @@
 import 'package:card_app/pages/cards_page/controllers/card_controller.dart';
 import 'package:card_app/pages/cards_page/widgets/card_display.dart';
-import 'package:card_app/shared/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screen_lock/functions.dart';
 import 'package:get/get.dart';
@@ -23,11 +22,11 @@ class VisibleCardList extends GetWidget<CardController> {
                   margin: EdgeInsets.only(top: index == 0 ? 0 : 10, bottom: 10),
                   child: CardDisplay(
                       card: controller.visibleCards[index],
-                      obsecure: true,
+                      obsecure: !controller.showNumbersOnListStatus.value,
                       onPressed: () {
                         screenLock(
                           context: context,
-                          correctString: '1234',
+                          correctString: controller.decriptedPin.value!,
                           confirmation: false,
                           didUnlocked: () {
                             Get.back();

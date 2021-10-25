@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 class Numpad extends StatefulWidget {
   final int length;
+  String value;
   final Function(String) onChange;
-  Numpad({Key? key, required this.length, required this.onChange})
+  Numpad(
+      {Key? key,
+      required this.length,
+      required this.value,
+      required this.onChange})
       : super(key: key);
 
   @override
@@ -11,21 +16,16 @@ class Numpad extends StatefulWidget {
 }
 
 class _NumpadState extends State<Numpad> {
-  String number = '';
-
   setValue(String val) {
-    if (number.length < widget.length)
-      setState(() {
-        number += val;
-        widget.onChange(number);
-      });
+    if (widget.value.length < widget.length) widget.value += val;
+    widget.onChange(widget.value);
   }
 
   backspace(String text) {
     if (text.length > 0) {
       setState(() {
-        number = text.split('').sublist(0, text.length - 1).join('');
-        widget.onChange(number);
+        widget.value = text.split('').sublist(0, text.length - 1).join('');
+        widget.onChange(widget.value);
       });
     }
   }
@@ -36,7 +36,7 @@ class _NumpadState extends State<Numpad> {
       width: 264,
       child: Column(
         children: <Widget>[
-          Preview(text: number, length: widget.length),
+          Preview(text: widget.value, length: widget.length),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -99,7 +99,7 @@ class _NumpadState extends State<Numpad> {
               NumpadButton(
                 haveBorder: false,
                 icon: Icons.backspace,
-                onPressed: () => backspace(number),
+                onPressed: () => backspace(widget.value),
               ),
             ],
           )
