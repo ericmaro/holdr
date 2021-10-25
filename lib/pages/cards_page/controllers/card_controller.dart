@@ -1,17 +1,23 @@
+import 'dart:async';
+
 import 'package:basic_utils/basic_utils.dart';
 import 'package:card_app/pages/cards_page/modals/card_modal.dart';
 import 'package:card_app/pages/cards_page/models/bank_card.dart';
 import 'package:card_app/pages/cards_page/services/card_service.dart';
 import 'package:card_app/pages/pin_page/models/pin.dart';
 import 'package:card_app/pages/pin_page/services/pin_service.dart';
+import 'package:card_app/pages/settings_page/controllers/settings_controller.dart';
 import 'package:card_app/shared/constants/constants.dart';
+import 'package:card_app/shared/helpers/storage.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:flutter/material.dart' hide Key;
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_fgbg/flutter_fgbg.dart';
 
 class CardController extends GetxController {
   final _cardService = Get.find<CardService>();
+  final _settingsController = Get.find<SettingsController>();
   final _pinService = Get.find<PinService>();
   Rx<Pin?> get pin => _pinService.pin;
   Rx<String?> decriptedPin = Rx<String?>(null);
@@ -22,6 +28,7 @@ class CardController extends GetxController {
   String filter = '';
   bool edit = false;
   final Rx<BankCard?> currentCard = Rx<BankCard?>(null);
+  late StreamSubscription<FGBGType> subscription;
 
   final cardTags = <String>[].obs;
 
@@ -29,10 +36,31 @@ class CardController extends GetxController {
   void onInit() {
     getCards();
     getPinDetails();
+    _settingsController.getShowNumbersOnListStatus();
     ever(cards, (List<BankCard> c) => setVisibleCards(c));
-
+    listenToScreenState();
     super.onInit();
   }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
+
+  listenToScreenState() {
+    subscription = FGBGEvents.stream.listen((event) async {
+      if (event == FGBGType.background) {
+        bool? _state = await Storage.getBool("enableIdleLockStatus");
+        if (_state != null && _state) {
+          Get.offAllNamed('/enter-pin');
+        }
+      }
+    });
+  }
+
+  RxBool get showNumbersOnListStatus =>
+      _settingsController.showNumbersOnListStatus;
 
   void getPinDetails() async {
     if (pin.value != null) {}

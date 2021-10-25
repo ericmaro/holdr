@@ -5,6 +5,7 @@ import 'package:encrypt/encrypt.dart';
 
 class PinController extends GetxController {
   final currentPin = "".obs;
+  Rx<Pin?> get pin => _pinService.pin;
   final _pinService = Get.find<PinService>();
 
   setCurrentPin(String value) {
@@ -24,6 +25,28 @@ class PinController extends GetxController {
       Pin _pin = Pin(pin: encrypted.base16, salt: key.base16);
       await _pinService.storePin(_pin);
       Get.toNamed('/home');
+    }
+  }
+
+  checkPin() async {
+    if (pin.value != null) {}
+    Pin? _pin = await _pinService.returnPin();
+
+    if (_pin != null) {
+      try {
+        final iv = IV.fromLength(16);
+        final key = Key.fromBase16(_pin.salt);
+        final encrypter = Encrypter(AES(key));
+        final decrypted = encrypter.decrypt16(_pin.pin, iv: iv);
+        if (decrypted == currentPin.value) {
+          Get.toNamed('/home');
+        } else {
+          setCurrentPin("");
+        }
+      } catch (e) {
+        print("catch error");
+        print(e);
+      }
     }
   }
 }

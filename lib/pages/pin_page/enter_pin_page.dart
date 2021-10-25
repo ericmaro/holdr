@@ -4,7 +4,7 @@ import 'package:card_app/shared/widgets/block_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PinPage extends GetWidget<PinController> {
+class EnterPinPage extends GetWidget<PinController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +14,7 @@ class PinPage extends GetWidget<PinController> {
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 60)
             .copyWith(bottom: 0),
         child: Text(
-          'To secure your information you will need to setup your Master PIN',
+          'Please Enter PIN to continue',
           textAlign: TextAlign.center,
         ),
       ),
@@ -29,7 +29,7 @@ class PinPage extends GetWidget<PinController> {
       Container(
         padding: EdgeInsets.all(15),
         child: BlockButton(
-            buttonText: 'Set PIN', onPressed: () => controller.setPin()),
+            buttonText: 'Enter', onPressed: () => controller.checkPin()),
       )
     ]));
   }

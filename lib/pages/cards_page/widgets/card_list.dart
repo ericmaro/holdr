@@ -22,7 +22,7 @@ class VisibleCardList extends GetWidget<CardController> {
                   margin: EdgeInsets.only(top: index == 0 ? 0 : 10, bottom: 10),
                   child: CardDisplay(
                       card: controller.visibleCards[index],
-                      obsecure: true,
+                      obsecure: !controller.showNumbersOnListStatus.value,
                       onPressed: () {
                         screenLock(
                           context: context,

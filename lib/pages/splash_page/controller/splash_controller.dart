@@ -1,5 +1,6 @@
 import 'package:card_app/pages/pin_page/models/pin.dart';
 import 'package:card_app/pages/pin_page/services/pin_service.dart';
+import 'package:card_app/shared/helpers/storage.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
@@ -21,10 +22,16 @@ class SplashController extends GetxController {
   initApp() {
     setIsBusy(true);
     Future.delayed(Duration(seconds: 3), () async {
+      bool? _state = await Storage.getBool("enablePinOnStartStatus");
+      print(_state);
       // initLocale();
       await _pinService.getPin();
       if (pin.value != null) {
-        Get.offNamed('/home');
+        if (_state != null && !_state) {
+          Get.offNamed('/home');
+        } else {
+          Get.offNamed('/enter-pin');
+        }
       } else {
         Get.offNamed('/pin');
       }

@@ -1,6 +1,7 @@
 import 'package:card_app/pages/cards_page/active_cards.dart';
 import 'package:card_app/pages/cards_page/controllers/card_binding.dart';
 import 'package:card_app/pages/pin_page/controller/pin_binding.dart';
+import 'package:card_app/pages/pin_page/enter_pin_page.dart';
 import 'package:card_app/pages/pin_page/pin_page.dart';
 import 'package:card_app/pages/splash_page/controller/splash_binding.dart';
 import 'package:card_app/pages/splash_page/splash_page.dart';
@@ -20,6 +21,11 @@ class AppRouter {
     GetPage(
       name: '/pin',
       page: () => PinPage(),
+      binding: PinBinding(),
+    ),
+     GetPage(
+      name: '/enter-pin',
+      page: () => EnterPinPage(),
       binding: PinBinding(),
     ),
     GetPage(

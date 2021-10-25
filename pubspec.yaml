@@ -21,34 +21,35 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  animated_bottom_navigation_bar: ^0.3.2
   basic_utils: ^3.6.1
+  cool_alert: ^1.1.0
+  credit_card_type_detector: ^2.0.0
   cupertino_icons: ^1.0.3
+  encrypt: ^5.0.1
   eva_icons_flutter: ^3.0.0
   flag: ^5.0.0-nullsafety
   flex_color_picker: ^2.1.2
   flutter:
     sdk: flutter
+  flutter_fgbg: ^0.1.0
   flutter_form_builder: ^6.1.0+1
   flutter_icons: ^1.1.0
+  flutter_screen_lock: ^4.0.4+2
+  font_awesome_flutter: ^9.1.0
   get: ^4.3.8
   get_storage: ^2.0.3
   graphql_flutter: ^5.0.0
   hexcolor: ^2.0.5
   intl: ^0.17.0
+  mask_text_input_formatter: ^2.0.0
   material_tag_editor: ^0.1.1
   pattern_formatter: ^2.0.0
   random_color: ^1.0.6-nullsafety
   sembast: ^3.1.1
-  uuid: ^3.0.5
+  shared_preferences: ^2.0.8
   sticky_headers: ^0.2.0
-  mask_text_input_formatter: ^2.0.0
-  credit_card_type_detector: ^2.0.0
-  font_awesome_flutter: ^9.1.0
-  cool_alert: ^1.1.0
-  flutter_screen_lock: ^4.0.4+2
-  encrypt: ^5.0.1
-  animated_bottom_navigation_bar: ^0.3.2
-
+  uuid: ^3.0.5
 
 dev_dependencies:
   flutter_test:
