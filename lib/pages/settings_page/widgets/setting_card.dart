@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:holdr/theme/theme.dart';
 
 class SettingCard extends StatelessWidget {
   final String title;
@@ -23,7 +25,7 @@ class SettingCard extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(15)),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
+            color: Get.isDarkMode? Theme.of(context).canvasColor : Colors.grey.withOpacity(0.1),
             spreadRadius: 5,
             blurRadius: 7,
             offset: Offset(0, 3), // changes position of shadow

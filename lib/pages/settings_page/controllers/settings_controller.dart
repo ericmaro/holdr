@@ -119,7 +119,7 @@ class SettingsController extends GetxController {
   }
 
   switchColorMode(bool value) {
-    ThemeService().changeTheme(value);
+    ThemeService().switchTheme();
     setColorSwitch(value);
   }
 

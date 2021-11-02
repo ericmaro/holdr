@@ -30,6 +30,7 @@ class Themes {
 
   final darkTheme = ThemeData.dark().copyWith(
       inputDecorationTheme: InputDecorationTheme(filled: true),
+      
       indicatorColor: HexColor("#14183F"),
       primaryColor: HexColor("#14183F"),
       accentColor: HexColor("#14183F"),

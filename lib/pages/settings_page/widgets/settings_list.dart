@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screen_lock/functions.dart';
 import 'package:get/get.dart';
+import 'package:holdr/theme/themeService.dart';
 
 class SettingsList extends GetWidget<SettingsController> {
   const SettingsList({Key? key}) : super(key: key);
@@ -52,8 +53,8 @@ class SettingsList extends GetWidget<SettingsController> {
                 leading: Icon(Icons.color_lens, color: Theme.of(context).listTileTheme.iconColor),
                 title: "Switch to Dark Mode",
                 trailing: CupertinoSwitch(
-                    value: controller.isDarkMode.value,
-                    onChanged: (val) => controller.switchColorMode(val))),
+                    value: Get.isDarkMode,
+                    onChanged: (val) => ThemeService().switchTheme())),
             SettingCard(
               leading: Icon(Icons.security_outlined, color: Theme.of(context).listTileTheme.iconColor),
               title: "Change Master PIN",

@@ -139,7 +139,7 @@ class Dot extends StatelessWidget {
         width: 15.0,
         height: 15.0,
         decoration: BoxDecoration(
-          color: isActive ? Theme.of(context).primaryColor : Colors.transparent,
+          color: isActive ? Theme.of(context).listTileTheme.iconColor : Colors.transparent,
           border: Border.all(width: 1.0, color: Theme.of(context).primaryColor),
           borderRadius: BorderRadius.circular(15.0),
         ),
@@ -160,11 +160,11 @@ class NumpadButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle buttonStyle =
-        TextStyle(fontSize: 22.0, color: Theme.of(context).primaryColor);
+        TextStyle(fontSize: 22.0, color: Theme.of(context).listTileTheme.iconColor);
     Widget label = icon != null
         ? Icon(
             icon,
-            color: Theme.of(context).primaryColor.withOpacity(0.8),
+            color: Theme.of(context).listTileTheme.iconColor!.withOpacity(0.8),
             size: 35.0,
           )
         : Text(this.text ?? '', style: buttonStyle);

@@ -19,9 +19,9 @@ class SplashController extends GetxController {
     super.onInit();
   }
 
-  initApp() async{
+  initApp() async {
     setIsBusy(true);
-      await _pinService.getPin();
+    await _pinService.getPin();
     Future.delayed(Duration(seconds: 3), () async {
       bool? _state = await Storage.getBool("enablePinOnStartStatus");
       print(_state);
