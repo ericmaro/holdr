@@ -16,7 +16,7 @@ class ActiveCards extends GetWidget<CardController> {
     return SafeArea(
       child: Container(
         padding: const EdgeInsets.fromLTRB(0, 15, 0, 5),
-        margin: const EdgeInsets.only(top: 5),
+        margin: const EdgeInsets.only(top: 15),
         width: Get.width,
         decoration: BoxDecoration(
             color: Colors.grey[200],
