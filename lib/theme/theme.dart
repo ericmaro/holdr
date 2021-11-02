@@ -4,9 +4,9 @@ import 'package:hexcolor/hexcolor.dart';
 class Themes {
   final lightTheme = ThemeData.light().copyWith(
       inputDecorationTheme: InputDecorationTheme(filled: true),
-      primaryColor: HexColor("#009D4D"),
-      indicatorColor: HexColor("#009D4D"),
-      accentColor: HexColor("#009D4D"),
+      primaryColor: HexColor("#14183F"),
+      indicatorColor: HexColor("#14183F"),
+      accentColor: HexColor("#14183F"),
       appBarTheme: AppBarTheme(
           brightness: Brightness.light,
           backgroundColor: Colors.white,
@@ -19,16 +19,16 @@ class Themes {
       floatingActionButtonTheme:
           FloatingActionButtonThemeData(backgroundColor: HexColor("#FFFFFF")),
       buttonTheme: ButtonThemeData(
-        buttonColor: HexColor("#009D4D"), //  <-- dark color
+        buttonColor: HexColor("#14183F"), //  <-- dark color
         textTheme:
             ButtonTextTheme.primary, //  <-- this auto selects the right color
       ));
 
   final darkTheme = ThemeData.dark().copyWith(
       inputDecorationTheme: InputDecorationTheme(filled: true),
-      indicatorColor: HexColor("#009D4D"),
-      primaryColor: HexColor("#009D4D"),
-      accentColor: HexColor("#009D4D"),
+      indicatorColor: HexColor("#14183F"),
+      primaryColor: HexColor("#14183F"),
+      accentColor: HexColor("#14183F"),
       appBarTheme: AppBarTheme(
         brightness: Brightness.dark,
       ),
@@ -37,9 +37,9 @@ class Themes {
       scaffoldBackgroundColor: HexColor("#021623"),
       canvasColor: HexColor("#021623"),
       floatingActionButtonTheme:
-          FloatingActionButtonThemeData(backgroundColor: HexColor("#009D4D")),
+          FloatingActionButtonThemeData(backgroundColor: HexColor("#14183F")),
       buttonTheme: ButtonThemeData(
-        buttonColor: HexColor("#009D4D"), //  <-- dark color
+        buttonColor: HexColor("#14183F"), //  <-- dark color
         textTheme:
             ButtonTextTheme.primary, //  <-- this auto selects the right color
       ));

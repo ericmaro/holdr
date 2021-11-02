@@ -1,6 +1,6 @@
-import 'package:card_app/pages/pin_page/models/pin.dart';
-import 'package:card_app/pages/pin_page/services/pin_service.dart';
-import 'package:card_app/shared/helpers/storage.dart';
+import 'package:holdr/pages/pin_page/models/pin.dart';
+import 'package:holdr/pages/pin_page/services/pin_service.dart';
+import 'package:holdr/shared/helpers/storage.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {

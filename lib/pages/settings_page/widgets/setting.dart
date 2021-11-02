@@ -1,5 +1,5 @@
-import 'package:card_app/pages/settings_page/controllers/settings_controller.dart';
-import 'package:card_app/pages/settings_page/model/setting.dart';
+import 'package:holdr/pages/settings_page/controllers/settings_controller.dart';
+import 'package:holdr/pages/settings_page/model/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

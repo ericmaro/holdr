@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:basic_utils/basic_utils.dart';
-import 'package:card_app/pages/cards_page/modals/card_modal.dart';
-import 'package:card_app/pages/cards_page/models/bank_card.dart';
-import 'package:card_app/pages/cards_page/services/card_service.dart';
-import 'package:card_app/pages/pin_page/models/pin.dart';
-import 'package:card_app/pages/pin_page/services/pin_service.dart';
-import 'package:card_app/pages/settings_page/controllers/settings_controller.dart';
-import 'package:card_app/shared/constants/constants.dart';
-import 'package:card_app/shared/helpers/storage.dart';
+import 'package:holdr/pages/cards_page/modals/card_modal.dart';
+import 'package:holdr/pages/cards_page/models/bank_card.dart';
+import 'package:holdr/pages/cards_page/services/card_service.dart';
+import 'package:holdr/pages/pin_page/models/pin.dart';
+import 'package:holdr/pages/pin_page/services/pin_service.dart';
+import 'package:holdr/pages/settings_page/controllers/settings_controller.dart';
+import 'package:holdr/shared/constants/constants.dart';
+import 'package:holdr/shared/helpers/storage.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:flutter/material.dart' hide Key;
 import 'package:get/get.dart';

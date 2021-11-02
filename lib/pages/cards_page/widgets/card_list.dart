@@ -1,5 +1,5 @@
-import 'package:card_app/pages/cards_page/controllers/card_controller.dart';
-import 'package:card_app/pages/cards_page/widgets/card_display.dart';
+import 'package:holdr/pages/cards_page/controllers/card_controller.dart';
+import 'package:holdr/pages/cards_page/widgets/card_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screen_lock/functions.dart';
 import 'package:get/get.dart';

@@ -1,4 +1,4 @@
-import 'package:card_app/pages/cards_page/widgets/tag.dart';
+import 'package:holdr/pages/cards_page/widgets/tag.dart';
 import 'package:flutter/material.dart';
 import 'package:material_tag_editor/tag_editor.dart';
 

@@ -1,7 +1,7 @@
-import 'package:card_app/pages/cards_page/controllers/card_controller.dart';
-import 'package:card_app/pages/cards_page/models/bank_card.dart';
-import 'package:card_app/pages/cards_page/widgets/tag_widget.dart';
-import 'package:card_app/shared/widgets/block_button.dart';
+import 'package:holdr/pages/cards_page/controllers/card_controller.dart';
+import 'package:holdr/pages/cards_page/models/bank_card.dart';
+import 'package:holdr/pages/cards_page/widgets/tag_widget.dart';
+import 'package:holdr/shared/widgets/block_button.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';

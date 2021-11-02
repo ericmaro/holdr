@@ -1,6 +1,6 @@
-import 'package:card_app/pages/pin_page/controller/pin_controller.dart';
-import 'package:card_app/pages/pin_page/widgets/num_pad.dart';
-import 'package:card_app/shared/widgets/block_button.dart';
+import 'package:holdr/pages/pin_page/controller/pin_controller.dart';
+import 'package:holdr/pages/pin_page/widgets/num_pad.dart';
+import 'package:holdr/shared/widgets/block_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
