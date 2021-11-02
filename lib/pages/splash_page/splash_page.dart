@@ -1,4 +1,5 @@
-import 'package:card_app/pages/splash_page/controller/splash_controller.dart';
+import 'package:holdr/pages/pin_page/services/pin_service.dart';
+import 'package:holdr/pages/splash_page/controller/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

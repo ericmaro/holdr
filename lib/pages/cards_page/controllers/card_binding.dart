@@ -1,7 +1,7 @@
-import 'package:card_app/pages/cards_page/controllers/card_controller.dart';
-import 'package:card_app/pages/cards_page/services/card_service.dart';
-import 'package:card_app/pages/pin_page/services/pin_service.dart';
-import 'package:card_app/pages/settings_page/controllers/settings_controller.dart';
+import 'package:holdr/pages/cards_page/controllers/card_controller.dart';
+import 'package:holdr/pages/cards_page/services/card_service.dart';
+import 'package:holdr/pages/pin_page/services/pin_service.dart';
+import 'package:holdr/pages/settings_page/controllers/settings_controller.dart';
 import 'package:get/get.dart';
 
 class CardBinding implements Bindings {

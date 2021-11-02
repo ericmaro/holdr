@@ -1,6 +1,6 @@
-import 'package:card_app/pages/pin_page/controller/pin_controller.dart';
-import 'package:card_app/pages/pin_page/services/pin_service.dart';
-import 'package:card_app/pages/splash_page/controller/splash_controller.dart';
+import 'package:holdr/pages/pin_page/controller/pin_controller.dart';
+import 'package:holdr/pages/pin_page/services/pin_service.dart';
+import 'package:holdr/pages/splash_page/controller/splash_controller.dart';
 import 'package:get/get.dart';
 
 class SplashBinding implements Bindings {

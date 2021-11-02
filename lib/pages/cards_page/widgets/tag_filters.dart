@@ -1,5 +1,5 @@
-import 'package:card_app/pages/cards_page/controllers/card_controller.dart';
-import 'package:card_app/shared/constants/constants.dart';
+import 'package:holdr/pages/cards_page/controllers/card_controller.dart';
+import 'package:holdr/shared/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

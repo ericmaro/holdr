@@ -1,8 +1,8 @@
-import 'package:card_app/pages/cards_page/controllers/card_controller.dart';
-import 'package:card_app/pages/cards_page/widgets/card_list.dart';
-import 'package:card_app/pages/cards_page/widgets/filter_list.dart';
-import 'package:card_app/shared/constants/constants.dart';
-import 'package:card_app/shared/widgets/appbar.dart';
+import 'package:holdr/pages/cards_page/controllers/card_controller.dart';
+import 'package:holdr/pages/cards_page/widgets/card_list.dart';
+import 'package:holdr/pages/cards_page/widgets/filter_list.dart';
+import 'package:holdr/shared/constants/constants.dart';
+import 'package:holdr/shared/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screen_lock/functions.dart';
 import 'package:get/get.dart';

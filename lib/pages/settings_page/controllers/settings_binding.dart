@@ -1,4 +1,4 @@
-import 'package:card_app/pages/settings_page/controllers/settings_controller.dart';
+import 'package:holdr/pages/settings_page/controllers/settings_controller.dart';
 import 'package:get/get.dart';
 
 class SettingsBinding implements Bindings {

@@ -1,4 +1,4 @@
-package com.example.card_app
+package com.atloncrest.holdr
 
 import io.flutter.embedding.android.FlutterActivity
 

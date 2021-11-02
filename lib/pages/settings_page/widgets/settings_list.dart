@@ -1,6 +1,6 @@
-import 'package:card_app/pages/settings_page/controllers/settings_controller.dart';
-import 'package:card_app/pages/settings_page/widgets/setting.dart';
-import 'package:card_app/pages/settings_page/widgets/setting_card.dart';
+import 'package:holdr/pages/settings_page/controllers/settings_controller.dart';
+import 'package:holdr/pages/settings_page/widgets/setting.dart';
+import 'package:holdr/pages/settings_page/widgets/setting_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screen_lock/functions.dart';

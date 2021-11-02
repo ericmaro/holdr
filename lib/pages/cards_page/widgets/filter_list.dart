@@ -1,6 +1,6 @@
-import 'package:card_app/pages/cards_page/controllers/card_controller.dart';
-import 'package:card_app/pages/cards_page/widgets/edit_tags_item.dart';
-import 'package:card_app/pages/cards_page/widgets/tag_filters.dart';
+import 'package:holdr/pages/cards_page/controllers/card_controller.dart';
+import 'package:holdr/pages/cards_page/widgets/edit_tags_item.dart';
+import 'package:holdr/pages/cards_page/widgets/tag_filters.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,6 +1,6 @@
-import 'package:card_app/pages/cards_page/models/bank_card.dart';
-import 'package:card_app/pages/cards_page/widgets/card_tags_list.dart';
-import 'package:card_app/shared/constants/constants.dart';
+import 'package:holdr/pages/cards_page/models/bank_card.dart';
+import 'package:holdr/pages/cards_page/widgets/card_tags_list.dart';
+import 'package:holdr/shared/constants/constants.dart';
 import 'package:credit_card_type_detector/credit_card_type_detector.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

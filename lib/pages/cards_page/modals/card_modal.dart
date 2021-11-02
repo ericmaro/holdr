@@ -1,6 +1,6 @@
-import 'package:card_app/pages/cards_page/controllers/card_controller.dart';
-import 'package:card_app/pages/cards_page/widgets/card_display.dart';
-import 'package:card_app/pages/cards_page/widgets/card_forms.dart';
+import 'package:holdr/pages/cards_page/controllers/card_controller.dart';
+import 'package:holdr/pages/cards_page/widgets/card_display.dart';
+import 'package:holdr/pages/cards_page/widgets/card_forms.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
