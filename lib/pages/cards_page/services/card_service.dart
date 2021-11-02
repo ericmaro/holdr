@@ -1,5 +1,4 @@
 import 'package:holdr/pages/cards_page/models/bank_card.dart';
-import 'package:holdr/pages/cards_page/widgets/card_display.dart';
 import 'package:holdr/shared/db/db.dart';
 import 'package:get/get.dart';
 import 'package:sembast/sembast.dart';

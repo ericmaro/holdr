@@ -8,7 +8,7 @@ class AddCardButton extends GetWidget<CardController> {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      backgroundColor: Colors.blue[800],
+      backgroundColor: Theme.of(context).primaryColor,
       onPressed: () {
         controller.addNewCard();
       },

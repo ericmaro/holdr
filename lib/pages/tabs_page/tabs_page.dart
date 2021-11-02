@@ -16,7 +16,7 @@ class TabsPage extends GetWidget<TabsPageController> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: Container(
-          color: Colors.blue[800],
+          color: Theme.of(context).primaryColor,
           child: Obx(() => _tabsPage[controller.tabIndex.value])),
       bottomNavigationBar: TabNavigationBar(),
       floatingActionButton: AddCardButton(),
