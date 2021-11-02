@@ -21,7 +21,7 @@ class CardDisplay extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        height: Get.height / 3.5,
+        height: 250,
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(25)),

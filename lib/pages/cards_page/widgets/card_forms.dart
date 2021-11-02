@@ -131,6 +131,7 @@ class CardForm extends GetWidget<CardController> {
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(context),
                             ]),
+                            keyboardType: TextInputType.datetime
                           ),
                         ),
                         SizedBox(
@@ -150,6 +151,7 @@ class CardForm extends GetWidget<CardController> {
                               labelText: 'CVV',
                               hintText: 'XXX',
                             ),
+                            keyboardType: TextInputType.number,
                             inputFormatters: [cvvFormatter],
                             validator: FormBuilderValidators.compose([
                               FormBuilderValidators.required(context),
