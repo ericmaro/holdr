@@ -5,6 +5,7 @@ import 'package:holdr/shared/helpers/storage.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:flutter/material.dart' hide Key;
 import 'package:get/get.dart';
+import 'package:holdr/theme/themeService.dart';
 
 class SettingsController extends GetxController {
   final _pinService = Get.find<PinService>();
@@ -24,6 +25,11 @@ class SettingsController extends GetxController {
   final enablePinOnStartStatus = false.obs;
   void setEnablePinOnStartStatus(bool state) {
     enablePinOnStartStatus(state);
+  }
+
+  final isDarkMode = false.obs;
+  void setColorSwitch(bool state) {
+    isDarkMode(state);
   }
 
   List<Setting> settings = [
@@ -53,6 +59,7 @@ class SettingsController extends GetxController {
     getEnableIdleLockStatus();
     getEnablePinOnStartStatus();
     getPinDetails();
+    getThemeMode();
     super.onInit();
   }
 
@@ -105,6 +112,15 @@ class SettingsController extends GetxController {
   enablePinOnStart(bool value) {
     Storage.setBool("enablePinOnStartStatus", value);
     getEnablePinOnStartStatus();
+  }
+
+  getThemeMode() {
+     setColorSwitch(Get.isDarkMode);
+  }
+
+  switchColorMode(bool value) {
+    ThemeService().switchTheme();
+    setColorSwitch(value);
   }
 
   getEnablePinOnStartStatus() async {

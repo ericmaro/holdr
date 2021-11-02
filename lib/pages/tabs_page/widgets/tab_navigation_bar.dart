@@ -16,6 +16,7 @@ class TabNavigationBar extends GetWidget<TabsPageController> {
           leftCornerRadius: 32,
           rightCornerRadius: 32,
           activeColor: Colors.white,
+          inactiveColor: Colors.white.withOpacity(.3),
           gapLocation: GapLocation.center,
           notchSmoothness: NotchSmoothness.softEdge,
           onTap: (val) => controller.setTabIndex(val));
