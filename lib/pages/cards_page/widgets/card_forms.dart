@@ -162,30 +162,34 @@ class CardForm extends GetWidget<CardController> {
                 ])),
           ),
           SizedBox(
-            height: 15,
+            height: MediaQuery.of(context).viewInsets.bottom == 0 ? 15 : 0,
           ),
-          ListTile(
-            title: const Text('Select color below to change this color'),
-            subtitle: Text(
-                '${ColorTools.materialNameAndCode(controller.currentCard.value!.color)} '
-                'aka ${ColorTools.nameThatColor(controller.currentCard.value!.color)}'),
-            trailing: ColorIndicator(
-                width: 44,
-                height: 44,
-                borderRadius: 22,
-                color: controller.currentCard.value!.color,
-                onSelect: () async {
-                  // Wait for the dialog to return color selection result.
-                  final bool state = await colorPickerDialog();
-                }),
-          ),
-          Container(
-              padding: EdgeInsets.all(15),
-              child: TagWidget(
-                  tags: controller.currentCard.value!.tags,
-                  onChanged: (value) {
-                    controller.addTag(value);
-                  })),
+          MediaQuery.of(context).viewInsets.bottom == 0
+              ? ListTile(
+                  title: const Text('Select color below to change this color'),
+                  subtitle: Text(
+                      '${ColorTools.materialNameAndCode(controller.currentCard.value!.color)} '
+                      'aka ${ColorTools.nameThatColor(controller.currentCard.value!.color)}'),
+                  trailing: ColorIndicator(
+                      width: 44,
+                      height: 44,
+                      borderRadius: 22,
+                      color: controller.currentCard.value!.color,
+                      onSelect: () async {
+                        // Wait for the dialog to return color selection result.
+                        final bool state = await colorPickerDialog();
+                      }),
+                )
+              : Container(),
+          MediaQuery.of(context).viewInsets.bottom == 0
+              ? Container(
+                  padding: EdgeInsets.all(15),
+                  child: TagWidget(
+                      tags: controller.currentCard.value!.tags,
+                      onChanged: (value) {
+                        controller.addTag(value);
+                      }))
+              : Container(),
           Container(
             padding: EdgeInsets.all(15),
             child: BlockButton(

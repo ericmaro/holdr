@@ -32,11 +32,7 @@ class CardModal extends GetWidget<CardController> {
             shrinkWrap: true,
             children: [
               CardForm(),
-              Padding(
-                  padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).viewInsets.bottom == 0
-                          ? 0
-                          : 200))
+              Padding(padding: EdgeInsets.only(bottom: 0))
             ],
           ),
         ),
