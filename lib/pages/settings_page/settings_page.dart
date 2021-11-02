@@ -10,7 +10,7 @@ class SettingsPage extends StatelessWidget {
     return SafeArea(
         child: Container(
       padding: const EdgeInsets.fromLTRB(20, 30, 20, 5),
-      margin: const EdgeInsets.only(top: 5),
+      margin: const EdgeInsets.only(top: 15),
       width: Get.width,
       decoration: BoxDecoration(
           color: Colors.grey[200],
