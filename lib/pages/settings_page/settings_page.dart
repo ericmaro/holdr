@@ -7,27 +7,26 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Container(
+    return Container(
       padding: const EdgeInsets.fromLTRB(20, 30, 20, 5),
-      margin: const EdgeInsets.only(top: 15),
+      margin: const EdgeInsets.only(top: 40),
       width: Get.width,
       decoration: BoxDecoration(
-          color: Colors.grey[200],
-          borderRadius: BorderRadius.vertical(top: Radius.circular(35))),
+      color: Theme.of(context).canvasColor,
+      borderRadius: BorderRadius.vertical(top: Radius.circular(35))),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Settings',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          SettingsList()
-        ],
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const Text(
+        'Settings',
+        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
       ),
-    ));
+      const SizedBox(
+        height: 20,
+      ),
+      SettingsList()
+    ],
+      ),
+    );
   }
 }

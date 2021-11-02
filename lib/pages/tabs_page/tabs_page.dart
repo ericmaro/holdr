@@ -14,11 +14,12 @@ class TabsPage extends GetWidget<TabsPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Theme.of(context).canvasColor,
       body: Container(
           color: Theme.of(context).primaryColor,
           child: Obx(() => _tabsPage[controller.tabIndex.value])),
       bottomNavigationBar: TabNavigationBar(),
+      extendBody: true,
       floatingActionButton: AddCardButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );

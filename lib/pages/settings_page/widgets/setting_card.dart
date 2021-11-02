@@ -19,7 +19,7 @@ class SettingCard extends StatelessWidget {
       padding: padding,
       margin: EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).listTileTheme.tileColor,
         borderRadius: BorderRadius.all(Radius.circular(15)),
         boxShadow: [
           BoxShadow(

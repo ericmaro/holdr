@@ -15,12 +15,12 @@ class SplashPage extends GetWidget<SplashController> {
           children: [
             Text(
               "Initializing...",
-              style: TextStyle(color: Colors.blue[800], fontSize: 20),
+              style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 20),
             ),
             SizedBox(
               height: 20,
             ),
-            CircularProgressIndicator()
+            CircularProgressIndicator(color: Theme.of(context).primaryColor,)
           ],
         ),
       ),
