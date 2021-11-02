@@ -1,5 +1,6 @@
 import 'package:holdr/pages/cards_page/controllers/card_controller.dart';
 import 'package:holdr/pages/cards_page/widgets/card_list.dart';
+import 'package:holdr/pages/cards_page/widgets/empty_cards.dart';
 import 'package:holdr/pages/cards_page/widgets/filter_list.dart';
 import 'package:holdr/shared/constants/constants.dart';
 import 'package:holdr/shared/widgets/appbar.dart';
@@ -34,7 +35,7 @@ class ActiveCards extends GetWidget<CardController> {
                         child: DisplayFilterList(main: true),
                       )
                     : Container(),
-                VisibleCardList()
+                controller.cards.length > 0 ? VisibleCardList() : EmptyCards()
               ],
             )),
       ),
