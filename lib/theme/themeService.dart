@@ -10,10 +10,16 @@ class ThemeService {
   ThemeMode get theme => _loadThemeFromBox() ? ThemeMode.dark : ThemeMode.light;
 
   /// Load isDArkMode from local storage and if it's empty, returns false (that means default theme is light)
-  bool _loadThemeFromBox() => _box.read(_key) ?? false;
+  bool _loadThemeFromBox() {
+    print("loading theme");
+    print(_box.read(_key));
+    return _box.read(_key) ?? false;
+  }
 
   /// Save isDarkMode to local storage
-  _saveThemeToBox(bool isDarkMode) => _box.write(_key, isDarkMode);
+  _saveThemeToBox(bool isDarkMode) {
+    return _box.write(_key, isDarkMode);
+  }
 
   /// Switch theme and save to local storage
   void switchTheme() {
