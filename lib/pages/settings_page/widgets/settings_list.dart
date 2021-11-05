@@ -59,7 +59,17 @@ class SettingsList extends GetWidget<SettingsController> {
                     value: Get.isDarkMode,
                     onChanged: (val) => ThemeService().switchTheme())),
             SettingCard(
-              onPress: ()=>controller.changePinAction(),
+              onPress: () {
+                screenLock(
+                  context: context,
+                  correctString: controller.decriptedPin.value!,
+                  confirmation: false,
+                  didUnlocked: () {
+                    Get.back();
+                    controller.changePinAction();
+                  },
+                );
+              },
               leading: Icon(Icons.security_outlined,
                   color: Theme.of(context).colorScheme.primary),
               title: "Change Master PIN",

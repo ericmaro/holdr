@@ -1,4 +1,5 @@
 import 'package:holdr/pages/pin_page/controller/pin_controller.dart';
+import 'package:holdr/pages/pin_page/forms/change_pin.dart';
 import 'package:holdr/pages/pin_page/widgets/num_pad.dart';
 import 'package:holdr/shared/widgets/block_button.dart';
 import 'package:flutter/material.dart';
@@ -19,18 +20,9 @@ class PinPage extends GetWidget<PinController> {
         ),
       ),
       Obx(() => Container(
-            child: Numpad(
-                value: controller.currentPin.value,
-                onChange: (value) {
-                  controller.onChangePin(value);
-                },
-                length: 4),
+            child: ChangePinForm(
+                confirm: true, onSubmit: (val) => controller.setPinString(val)),
           )),
-      Container(
-        padding: EdgeInsets.all(15),
-        child: BlockButton(
-            buttonText: 'Set PIN', onPressed: () => controller.setPin()),
-      )
     ]));
   }
 }

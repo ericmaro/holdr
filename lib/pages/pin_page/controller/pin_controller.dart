@@ -16,15 +16,16 @@ class PinController extends GetxController {
     setCurrentPin(value);
   }
 
-  setPin() async {
-    if (currentPin.value.length == 4) {
+
+  setPinString(String value) async {
+    if (value.length == 4) {
       final iv = IV.fromLength(16);
       final Key key = Key.fromSecureRandom(16);
       final encrypter = Encrypter(AES(key));
-      final encrypted = encrypter.encrypt(currentPin.value, iv: iv);
+      final encrypted = encrypter.encrypt(value, iv: iv);
       Pin _pin = Pin(pin: encrypted.base16, salt: key.base16);
       await _pinService.storePin(_pin);
-      Get.toNamed('/home');
+      await _pinService.getPin();
     }
   }
 
