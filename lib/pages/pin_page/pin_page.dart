@@ -19,10 +19,10 @@ class PinPage extends GetWidget<PinController> {
           textAlign: TextAlign.center,
         ),
       ),
-      Obx(() => Container(
+      Container(
             child: ChangePinForm(
-                confirm: true, onSubmit: (val) => controller.setPinString(val)),
-          )),
+                confirm: true, onSubmit: (val) {controller.setPinString(val); Get.offNamed('/home');}),
+          ),
     ]));
   }
 }

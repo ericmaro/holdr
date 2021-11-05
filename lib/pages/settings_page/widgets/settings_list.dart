@@ -17,7 +17,7 @@ class SettingsList extends GetWidget<SettingsController> {
           children: [
             SettingCard(
                 leading: Icon(Icons.password_outlined,
-                    color: Theme.of(context).colorScheme.primary),
+                    color: Theme.of(context).colorScheme.primaryVariant),
                 title: "Show Numbers on Card List",
                 trailing: CupertinoSwitch(
                     value: controller.showNumbersOnListStatus.value,
@@ -39,24 +39,24 @@ class SettingsList extends GetWidget<SettingsController> {
                         })),
             SettingCard(
                 leading: Icon(Icons.phonelink_lock_outlined,
-                    color: Theme.of(context).colorScheme.primary),
+                    color: Theme.of(context).colorScheme.primaryVariant),
                 title: "Enable Idle PIN lock",
                 trailing: CupertinoSwitch(
                     value: controller.enableIdleLockStatus.value,
                     onChanged: (val) => controller.enableIdleLock(val))),
             SettingCard(
                 leading: Icon(Icons.lock_outlined,
-                    color: Theme.of(context).colorScheme.primary),
+                    color: Theme.of(context).colorScheme.primaryVariant),
                 title: "Enable PIN on start",
                 trailing: CupertinoSwitch(
                     value: controller.enablePinOnStartStatus.value,
                     onChanged: (val) => controller.enablePinOnStart(val))),
             SettingCard(
                 leading: Icon(Icons.color_lens,
-                    color: Theme.of(context).colorScheme.primary),
+                    color: Theme.of(context).colorScheme.primaryVariant),
                 title: "Switch to Dark Mode",
                 trailing: CupertinoSwitch(
-                    value: Get.isDarkMode,
+                    value: ThemeService().getThemeState(),
                     onChanged: (val) => ThemeService().switchTheme())),
             SettingCard(
               onPress: () {
@@ -71,7 +71,7 @@ class SettingsList extends GetWidget<SettingsController> {
                 );
               },
               leading: Icon(Icons.security_outlined,
-                  color: Theme.of(context).colorScheme.primary),
+                  color: Theme.of(context).colorScheme.primaryVariant),
               title: "Change Master PIN",
             ),
           ],

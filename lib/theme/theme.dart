@@ -53,7 +53,7 @@ class Themes {
           onPrimary: HexColor("#14183F"),
           onSecondary: HexColor("#14183F"),
           onSurface: HexColor("#14183F"),
-          primaryVariant: HexColor("#14183F"),
+          primaryVariant: HexColor("#FFFFFF"),
           secondaryVariant: HexColor("#14183F"),
           secondary: HexColor("#14183F")),
       appBarTheme: AppBarTheme(
