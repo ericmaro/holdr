@@ -1,5 +1,7 @@
 import 'package:holdr/pages/pin_page/models/pin.dart';
 import 'package:holdr/pages/pin_page/services/pin_service.dart';
+import 'package:holdr/pages/settings_page/forms/change_pin.dart';
+import 'package:holdr/pages/settings_page/modals/change_pin_modal.dart';
 import 'package:holdr/pages/settings_page/model/setting.dart';
 import 'package:holdr/shared/helpers/storage.dart';
 import 'package:encrypt/encrypt.dart';
@@ -115,7 +117,7 @@ class SettingsController extends GetxController {
   }
 
   getThemeMode() {
-     setColorSwitch(Get.isDarkMode);
+    setColorSwitch(Get.isDarkMode);
   }
 
   switchColorMode(bool value) {
@@ -130,5 +132,9 @@ class SettingsController extends GetxController {
     } else {
       setEnablePinOnStartStatus(false);
     }
+  }
+
+  changePinAction() {
+    Get.bottomSheet(ChangePinModal(), isScrollControlled: true);
   }
 }
