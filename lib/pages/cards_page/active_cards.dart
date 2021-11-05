@@ -21,6 +21,16 @@ class ActiveCards extends GetWidget<CardController> {
             physics: BouncingScrollPhysics(),
             children: [
               ListTile(
+                trailing: MaterialButton(
+                    padding: EdgeInsets.all(12),
+                    shape: CircleBorder(),
+                    color: Colors.blue,
+                    textColor: Colors.white,
+                    onPressed: () => controller.getCards(),
+                    child: Icon(
+                      Icons.refresh,
+                      color: Colors.white,
+                    )),
                 title: Text('Your Cards',
                     style:
                         TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
