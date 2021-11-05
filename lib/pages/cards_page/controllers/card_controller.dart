@@ -34,6 +34,7 @@ class CardController extends GetxController {
 
   @override
   void onInit() {
+    getCards();
     getPinDetails();
     _settingsController.getShowNumbersOnListStatus();
     ever(cards, (List<BankCard> c) => setVisibleCards(c));
