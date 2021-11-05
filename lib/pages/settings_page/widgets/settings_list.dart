@@ -56,10 +56,11 @@ class SettingsList extends GetWidget<SettingsController> {
                     color: Theme.of(context).colorScheme.primary),
                 title: "Switch to Dark Mode",
                 trailing: CupertinoSwitch(
-                    value: Get.isDarkMode,
+                    value: ThemeService().theme == ThemeMode.dark,
                     onChanged: (val) => ThemeService().switchTheme())),
             SettingCard(
-              onPress: () {
+              onPress: () async {
+                await controller.getPinDetails();
                 screenLock(
                   context: context,
                   correctString: controller.decriptedPin.value!,

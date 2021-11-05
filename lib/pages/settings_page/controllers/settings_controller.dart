@@ -57,15 +57,16 @@ class SettingsController extends GetxController {
 
   @override
   void onInit() {
+    getPinDetails();
     getShowNumbersOnListStatus();
     getEnableIdleLockStatus();
     getEnablePinOnStartStatus();
-    getPinDetails();
+
     getThemeMode();
     super.onInit();
   }
 
-  void getPinDetails() async {
+  Future<void> getPinDetails() async {
     if (pin.value != null) {}
     Pin? _pin = await _pinService.returnPin();
 
