@@ -151,7 +151,7 @@ class CardController extends GetxController {
 
   addNewCard() {
     selectCard(BankCard(
-        color: Colors.deepOrange,
+        color: Colors.blueGrey,
         cardNumber: "0000 0000 0000 0000",
         cardHolder: "Your Name",
         cvv: "222",

@@ -114,25 +114,24 @@ class CardForm extends GetWidget<CardController> {
                       children: [
                         Expanded(
                           child: FormBuilderTextField(
-                            name: 'validDate',
-                            initialValue:
-                                controller.currentCard.value!.validDate ==
-                                        '2/22'
-                                    ? ""
-                                    : controller.currentCard.value!.validDate,
-                            textCapitalization: TextCapitalization.sentences,
-                            decoration: InputDecoration(
-                              filled: true,
-                              isDense: true,
-                              labelText: 'Expiry Date',
-                              hintText: 'XX/XX',
-                            ),
-                            inputFormatters: [validDateFormatter],
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(context),
-                            ]),
-                            keyboardType: TextInputType.datetime
-                          ),
+                              name: 'validDate',
+                              initialValue:
+                                  controller.currentCard.value!.validDate ==
+                                          '2/22'
+                                      ? ""
+                                      : controller.currentCard.value!.validDate,
+                              textCapitalization: TextCapitalization.sentences,
+                              decoration: InputDecoration(
+                                filled: true,
+                                isDense: true,
+                                labelText: 'Expiry Date',
+                                hintText: 'XX/XX',
+                              ),
+                              inputFormatters: [validDateFormatter],
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(context),
+                              ]),
+                              keyboardType: TextInputType.datetime),
                         ),
                         SizedBox(
                           width: 20,
@@ -183,15 +182,13 @@ class CardForm extends GetWidget<CardController> {
                       }),
                 )
               : Container(),
-          MediaQuery.of(context).viewInsets.bottom == 0
-              ? Container(
-                  padding: EdgeInsets.all(15),
-                  child: TagWidget(
-                      tags: controller.currentCard.value!.tags,
-                      onChanged: (value) {
-                        controller.addTag(value);
-                      }))
-              : Container(),
+          Container(
+              padding: EdgeInsets.all(15),
+              child: TagWidget(
+                  tags: controller.currentCard.value!.tags,
+                  onChanged: (value) {
+                    controller.addTag(value);
+                  })),
           Container(
             padding: EdgeInsets.all(15),
             child: BlockButton(

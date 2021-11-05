@@ -48,7 +48,7 @@ class _TagWidgetState extends State<TagWidget> {
       delimiters: [',', ' '],
       hasAddButton: true,
       inputDecoration: InputDecoration(
-        fillColor: Colors.white,
+        fillColor: Colors.transparent,
         border: InputBorder.none,
         hintText: 'Add tags to this card...',
       ),
