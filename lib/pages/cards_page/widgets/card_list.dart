@@ -9,36 +9,32 @@ class VisibleCardList extends GetWidget<CardController> {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: [
-        Obx(() {
-          return ListView.builder(
-              shrinkWrap: true,
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: controller.visibleCards.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.only(top: index == 0 ? 0 : 10, bottom: 10),
-                  child: CardDisplay(
-                      card: controller.visibleCards[index],
-                      obsecure: !controller.showNumbersOnListStatus.value,
-                      onPressed: () {
-                        screenLock(
-                          context: context,
-                          correctString: controller.decriptedPin.value!,
-                          confirmation: false,
-                          didUnlocked: () {
-                            Get.back();
-                            controller.selectCard(
-                                controller.visibleCards.toList()[index]);
-                          },
-                        );
-                      }),
-                );
-              });
-        })
-      ],
-    );
+    return Obx(() {
+      return ListView.builder(
+          shrinkWrap: true,
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: controller.visibleCards.length,
+          itemBuilder: (context, index) {
+            return Container(
+              margin: EdgeInsets.only(top: index == 0 ? 0 : 10, bottom: 10),
+              child: CardDisplay(
+                  card: controller.visibleCards[index],
+                  obsecure: !controller.showNumbersOnListStatus.value,
+                  onPressed: () {
+                    screenLock(
+                      context: context,
+                      correctString: controller.decriptedPin.value!,
+                      confirmation: false,
+                      didUnlocked: () {
+                        Get.back();
+                        controller.selectCard(
+                            controller.visibleCards.toList()[index]);
+                      },
+                    );
+                  }),
+            );
+          });
+    });
   }
 }
