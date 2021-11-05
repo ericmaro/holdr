@@ -7,6 +7,7 @@ import 'package:holdr/shared/helpers/storage.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:flutter/material.dart' hide Key;
 import 'package:get/get.dart';
+import 'package:holdr/theme/theme.dart';
 import 'package:holdr/theme/themeService.dart';
 
 class SettingsController extends GetxController {
@@ -118,11 +119,13 @@ class SettingsController extends GetxController {
   }
 
   getThemeMode() {
-    setColorSwitch(Get.isDarkMode);
+    setColorSwitch(Get.theme == Themes().darkTheme);
   }
 
-  switchColorMode(bool value) {
+  switchColorMode() {
     ThemeService().switchTheme();
+    bool value = Get.theme == Themes().darkTheme;
+    print('Is it dark? $value');
     setColorSwitch(value);
   }
 
