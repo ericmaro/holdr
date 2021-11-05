@@ -28,6 +28,6 @@ class ThemeService {
   }
 
   bool getThemeState() {
-    return _box.read(_key);
+    return _box.read(_key) ?? false;
   }
 }
