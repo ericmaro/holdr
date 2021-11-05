@@ -28,8 +28,7 @@ class PinController extends GetxController {
     }
   }
 
-  checkPin() async {
-    if (pin.value != null) {}
+  checkPin(String value) async {
     Pin? _pin = await _pinService.returnPin();
 
     if (_pin != null) {
@@ -38,8 +37,8 @@ class PinController extends GetxController {
         final key = Key.fromBase16(_pin.salt);
         final encrypter = Encrypter(AES(key));
         final decrypted = encrypter.decrypt16(_pin.pin, iv: iv);
-        if (decrypted == currentPin.value) {
-          Get.toNamed('/home');
+        if (decrypted == value) {
+          Get.offNamed('/home');
         } else {
           setCurrentPin("");
         }

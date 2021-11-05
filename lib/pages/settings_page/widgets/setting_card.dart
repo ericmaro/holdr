@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:holdr/theme/theme.dart';
+import 'package:holdr/theme/themeService.dart';
 
 class SettingCard extends StatelessWidget {
   final String title;
@@ -23,11 +24,13 @@ class SettingCard extends StatelessWidget {
       padding: padding,
       margin: EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
-        color: Theme.of(context).backgroundColor,
+        color: ThemeService().getThemeState()
+            ? Theme.of(context).primaryColor
+            : Theme.of(context).backgroundColor,
         borderRadius: BorderRadius.all(Radius.circular(15)),
         boxShadow: [
           BoxShadow(
-            color: Get.isDarkMode
+            color: ThemeService().getThemeState()
                 ? Theme.of(context).canvasColor
                 : Colors.grey.withOpacity(0.1),
             spreadRadius: 5,
