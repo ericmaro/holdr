@@ -16,7 +16,6 @@ class PinController extends GetxController {
     setCurrentPin(value);
   }
 
-
   setPinString(String value) async {
     if (value.length == 4) {
       final iv = IV.fromLength(16);
