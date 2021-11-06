@@ -11,7 +11,7 @@ class ActiveCards extends GetWidget<CardController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(0, 1, 0, 0),
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
       margin: const EdgeInsets.only(top: 40),
       width: Get.width,
       decoration: BoxDecoration(

@@ -45,6 +45,7 @@ class CardForm extends GetWidget<CardController> {
           style: Theme.of(context).textTheme.subtitle1,
         ),
         showMaterialName: true,
+        pickerTypeTextStyle: Theme.of(context).textTheme.subtitle1,
         showColorName: true,
         showColorCode: true,
         copyPasteBehavior: const ColorPickerCopyPasteBehavior(
@@ -67,6 +68,14 @@ class CardForm extends GetWidget<CardController> {
         context,
         constraints:
             const BoxConstraints(minHeight: 480, minWidth: 300, maxWidth: 320),
+        shape: ShapeBorder.lerp(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            0.5),
       );
     }
 
