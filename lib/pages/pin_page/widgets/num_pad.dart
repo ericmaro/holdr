@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:holdr/pages/pin_page/widgets/animation/shake_widget_state.dart';
+import 'package:holdr/pages/pin_page/widgets/shake_widget.dart';
 
 class Numpad extends StatefulWidget {
   final int length;
   String value;
+  final bool shake;
   final Function(String) onChange;
   Numpad(
       {Key? key,
       required this.length,
       required this.value,
+      required this.shake,
       required this.onChange})
       : super(key: key);
 
@@ -30,13 +34,28 @@ class _NumpadState extends State<Numpad> {
     }
   }
 
+  final shakeKey = GlobalKey<ShakeWidgetState>();
+
   @override
   Widget build(BuildContext context) {
+    if (widget.shake) {
+      print(widget.shake);
+      shakeKey.currentState!.shake();
+    }
     return Container(
       width: 264,
       child: Column(
         children: <Widget>[
-          Preview(text: widget.value, length: widget.length),
+          ShakeWidget(
+            // 4. pass the GlobalKey as an argument
+            key: shakeKey,
+            // 5. configure the animation parameters
+            shakeCount: 3,
+            shakeOffset: 10,
+            shakeDuration: Duration(milliseconds: 500),
+            // 6. Add the child widget that will be animated
+            child: Preview(text: widget.value, length: widget.length),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -142,7 +161,8 @@ class Dot extends StatelessWidget {
           color: isActive
               ? Theme.of(context).colorScheme.primaryVariant
               : Colors.transparent,
-          border: Border.all(width: 1.0, color: Theme.of(context).colorScheme.primaryVariant),
+          border: Border.all(
+              width: 1.0, color: Theme.of(context).colorScheme.primaryVariant),
           borderRadius: BorderRadius.circular(15.0),
         ),
       ),
@@ -161,12 +181,13 @@ class NumpadButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle buttonStyle =
-        TextStyle(fontSize: 22.0, color: Theme.of(context).colorScheme.primaryVariant);
+    TextStyle buttonStyle = TextStyle(
+        fontSize: 22.0, color: Theme.of(context).colorScheme.primaryVariant);
     Widget label = icon != null
         ? Icon(
             icon,
-            color: Theme.of(context).colorScheme.primaryVariant.withOpacity(0.8),
+            color:
+                Theme.of(context).colorScheme.primaryVariant.withOpacity(0.8),
             size: 35.0,
           )
         : Text(this.text ?? '', style: buttonStyle);

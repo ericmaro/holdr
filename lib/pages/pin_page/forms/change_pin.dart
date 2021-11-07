@@ -4,7 +4,9 @@ import 'package:holdr/pages/pin_page/widgets/num_pad.dart';
 class ChangePinForm extends StatefulWidget {
   final Function(String) onSubmit;
   final bool confirm;
-  ChangePinForm({Key? key, required this.confirm, required this.onSubmit})
+  final bool? hasError;
+  ChangePinForm(
+      {Key? key, required this.confirm, this.hasError, required this.onSubmit})
       : super(key: key);
 
   @override
@@ -42,12 +44,17 @@ class _ChangePinFormState extends State<ChangePinForm> {
         ),
       Numpad(
           length: 4,
+          shake: widget.hasError != null && widget.hasError!,
           onChange: (value) {
             //if value length is 4 setPairValue else do Nothing while set _value
             if (value.length == 4) {
               //if widget.confirm is true, then submuit value with widget.onSubmit()
               if (!widget.confirm) {
                 widget.onSubmit(value);
+                //set  state value _value to empty string
+                setState(() {
+                  _value = '';
+                });
               } else {
                 setPairValue(value);
               }

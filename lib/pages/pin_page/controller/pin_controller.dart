@@ -8,6 +8,12 @@ class PinController extends GetxController {
   Rx<Pin?> get pin => _pinService.pin;
   final _pinService = Get.find<PinService>();
 
+  final hasError = false.obs;
+//set hasError
+  void setError(bool value) {
+    hasError(value);
+  }
+
   setCurrentPin(String value) {
     currentPin(value);
   }
@@ -30,7 +36,7 @@ class PinController extends GetxController {
 
   checkPin(String value) async {
     Pin? _pin = await _pinService.returnPin();
-
+    setError(false);
     if (_pin != null) {
       try {
         final iv = IV.fromLength(16);
@@ -41,9 +47,16 @@ class PinController extends GetxController {
           Get.offNamed('/home');
         } else {
           setCurrentPin("");
+          setError(true);
+
+          //delay then setError to false
+          Future.delayed(Duration(milliseconds: 20), () {
+            setError(false);
+          });
         }
       } catch (e) {
         print("catch error");
+        setError(true);
         print(e);
       }
     }

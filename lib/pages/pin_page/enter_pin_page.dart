@@ -21,11 +21,12 @@ class EnterPinPage extends GetWidget<PinController> {
                 textAlign: TextAlign.center,
               ),
             ),
-            ChangePinForm(
+            Obx(() => ChangePinForm(
                 confirm: false,
+                hasError: controller.hasError.value,
                 onSubmit: (val) {
                   controller.checkPin(val);
-                })
+                }))
           ]),
     ));
   }
