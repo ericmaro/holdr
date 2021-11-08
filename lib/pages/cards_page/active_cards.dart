@@ -26,12 +26,11 @@ class ActiveCards extends GetWidget<CardController> {
                   trailing: MaterialButton(
                       padding: EdgeInsets.all(12),
                       shape: CircleBorder(),
-                      color: Colors.blue,
                       textColor: Colors.white,
                       onPressed: () => controller.getCards(),
                       child: Icon(
                         Icons.refresh,
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.primaryVariant,
                       )),
                   title: Text('Your Cards',
                       style:
