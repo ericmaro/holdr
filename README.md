@@ -1,6 +1,6 @@
 # Holder App
 
-![header image](https://github.com/ericmaro/holdr/blob/main/assets/images/cover.png)
+![header image](https://github.com/ericmaro/holdr/blob/main/assets/images/cover.jpg)
 
 Simple Offline customizable holder app for virtual cards. 
 
