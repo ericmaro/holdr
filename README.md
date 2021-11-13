@@ -1,6 +1,6 @@
 # Holder App
 
-Simple customizable holder app for virtual cards.
+Simple Offline customizable holder app for virtual cards. 
 
 ## Installing
 
